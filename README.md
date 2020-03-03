@@ -14,7 +14,7 @@ There are still numerous commercial providers, but the number of freely accessib
 
 ### Open Access
 
-The project aims to present as few barriers as possible to accessing GTIN and product data. The code for providing the service will be released under as open source (see LICENSE for details) and wherever possible the data will be made available under open licenses.
+The project aims to present as few barriers as possible to accessing GTIN and product data. The code for providing the service will be released as open source (see LICENSE for details) and wherever possible the data will be made available under open licenses.
 
 There may be a need to apply some constraints - _e.g._ rate limiting or requiring authorisation for certain tasks - but these will only be introduced for the sake of performance, security or similar concerns.
 
@@ -22,13 +22,13 @@ There may be a need to apply some constraints - _e.g._ rate limiting or requirin
 
 The project _is not_ intended to be a single source of truth for product data. Instead the goal is to provide a framework for sharing product data between otherwise autonomous sources.
 
-It's anticipated that the project will require novel protocols for federating data between disparate systems, and will be looking for inspiration from other federated or distributed systems (_e.g._DNS, Open Social, _etc_).
+It's anticipated that the project will require novel protocols for federating data between disparate systems, and will be looking for inspiration from other distributed systems (_e.g._ DNS, Open Social, _etc_).
 
 ### Migration Path
 
 The initial goal for this project is to establish a migration path for users of existing APIs - notably Datakick. One aim is to provide a Datakick-compatible endpoint to allow developers
 
-The database will initially be seeded using data sourced from Datakick.
+The database will be seeded using data sourced from Datakick, at least initially.
 
 ## Getting Started
 
