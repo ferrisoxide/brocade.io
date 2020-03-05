@@ -5,17 +5,21 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.css">
     <script defer="true" src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
 
     <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <%= render 'layouts/analytics' if Rails.env.production? %>
   </head>
 
   <body>
+    <%= render 'layouts/navbar' -%>
+    <%= render 'layouts/wip_warning' -%>
     <div class="container">
       <%= yield %>
     </div>
+    <%= render 'layouts/footer' -%>
   </body>
 </html>
