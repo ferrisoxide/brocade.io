@@ -26,7 +26,7 @@ It's anticipated that the project will require novel protocols for federating da
 
 ### Migration Path
 
-The initial goal for this project is to establish a migration path for users of existing APIs - notably Datakick. One aim is to provide a Datakick-compatible endpoint to allow developers of Datakick libraries an endpoint to retarget to.
+The initial goal for this project is to establish a migration path for users of existing APIs - notably Datakick. One aim is to provide a Datakick-compatible endpoint for developers of Datakick-related libraries to target.
 
 The database will be seeded using data sourced from Datakick, at least initially.
 
@@ -41,14 +41,14 @@ datakick.org. Install the data via the rake task:
 [bundle exec] rails db:seed:datakick
 ```
 
-NB There are about 6000 entries in seed data, but it doesn't include any images.
+NB There are about 6000 entries in the seed data, but it doesn't include any images.
 
 
 ## TODO
 
 * Basic auth / accounts
 * Add support for adding / modifying records
-* Import image data from Datakick
+* Import image data from Datakick (check with @ankane first)
 * Source more open product data
 * Front-end UI
-* New `products` endpoint with more features
+* New `/products` endpoint with more features
