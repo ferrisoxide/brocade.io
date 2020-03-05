@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: brocade_io_production
-  username: brocade_io
-  password: <%= ENV['BROCADE_IO_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
