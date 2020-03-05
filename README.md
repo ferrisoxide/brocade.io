@@ -33,3 +33,22 @@ The database will be seeded using data sourced from Datakick, at least initially
 ## Getting Started
 
 This section will have to be added to as the project proceeds, but for now assume a technology stack based around Ruby on Rails and Postgres.
+
+Assuming you're able to get the app installed, there is a basic seed file available using a recent download from
+datakick.org. Install the data via the rake task:
+
+```
+[bundle exec] rails db:seed:datakick
+```
+
+NB There are about 6000 entries in seed data, but it doesn't include any images.
+
+
+## TODO
+
+* Basic auth / accounts
+* Add support for adding / modifying records
+* Import image data from Datakick
+* Source more open product data
+* Front-end UI
+* New `products` endpoint with more features
