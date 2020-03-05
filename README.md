@@ -41,7 +41,7 @@ datakick.org. Install the data via the rake task:
 [bundle exec] rails db:seed:datakick
 ```
 
-NB There are about 6000 entries in seed data, but it doesn't include any images.
+NB There are about 6000 entries in the seed data, but it doesn't include any images.
 
 
 ## TODO
