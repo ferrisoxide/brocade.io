@@ -1,0 +1,37 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title">API Documentation</h1>
+
+    <p>
+    By and large we're attempting to replicate the API provided by <a href="http://www.datakick.org">datakick.org</a>.
+    Consequently the text here has been copied from the <a href="https://www.datakick.org/api">datakick API documentation</a>, at least to get things started.
+    We'll update and refine the documentation as we go.
+    </p>
+
+    <p>
+    Currently the API is read-only, and has no support for images.
+    </p>
+
+    <h2 class="subtitle">Find an item</h2>
+    <p>Lookup an item by UPC or EAN</p>
+
+    <p>GET https://www.brocade.io/api/items/000000000000</p>
+
+    <h2 class="subtitle">Find an item</h2>
+    <p>Lookup an item by UPC or EAN</p>
+
+    <p>GET https://www.brocade.io/api/items/000000000000</p>
+
+    <h2 class="subtitle">List items</h2>
+    <p>GET https://www.brocade.io/api/items</p>
+
+    <p>Up to 100 items are returned by default.</p>
+
+    <p>Pagination info is returned in the Link header.</p>
+
+    <p>To search items, use the query parameter.</p>
+
+    <p>GET https://www.brocade.io/api/items?query=peanut+butter</p>
+
+  </div>
+</section>
