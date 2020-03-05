@@ -48,7 +48,7 @@ NB There are about 6000 entries in seed data, but it doesn't include any images.
 
 * Basic auth / accounts
 * Add support for adding / modifying records
-* Import image data from Datakick
+* Import image data from Datakick (check with @ankane first)
 * Source more open product data
 * Front-end UI
-* New `products` endpoint with more features
+* New `/products` endpoint with more features
