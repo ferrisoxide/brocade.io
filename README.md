@@ -26,7 +26,7 @@ It's anticipated that the project will require novel protocols for federating da
 
 ### Migration Path
 
-The initial goal for this project is to establish a migration path for users of existing APIs - notably Datakick. One aim is to provide a Datakick-compatible endpoint to allow developers
+The initial goal for this project is to establish a migration path for users of existing APIs - notably Datakick. One aim is to provide a Datakick-compatible endpoint to allow developers of Datakick libraries an endpoint to retarget to.
 
 The database will be seeded using data sourced from Datakick, at least initially.
 
