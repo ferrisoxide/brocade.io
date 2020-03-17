@@ -1,6 +1,14 @@
 class Product < ApplicationRecord
   # TODO add validations, etc
 
+  def self.from_param(param)
+    find_by_gtin!(param)
+  end
+
+  def to_param
+    gtin
+  end
+
   scope :full_text_search, ->(terms) {
     where([
       FULL_TEXT_SEARCH_SQL,

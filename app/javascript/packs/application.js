@@ -8,6 +8,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+import '../stylesheets/application.scss'
+
 // TODO: Move this into separate file
 document.addEventListener('turbolinks:load', () => {
 

@@ -1,0 +1,10 @@
+<h3><%= @product.name %></h3>
+<h2><%= @product.gtin %></h2>
+
+<%- if @product.brand_name.present?  %>
+<p><strong>Brand Name</strong> <%= @product.brand_name %></p>
+<%- end -%>
+
+<%- @product.properties.each do |key, value| -%>
+  <p><strong><%= key.humanize %></strong> <%= value %></p>
+<%- end -%>
