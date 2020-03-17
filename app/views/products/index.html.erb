@@ -1,0 +1,27 @@
+<p><%= product_count(@products) %></p>
+
+<%= form_tag(products_path, method: :get) do %>
+  Search <%= text_field_tag :query %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>GTIN</th>
+      <th>Name</th>
+      <th>Brand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- @products.each do |product| -%>
+    <tr>
+      <td><%= link_to product.gtin, product_path(product) %></td>
+      <td><%= link_to product.name, product_path(product) %></td>
+      <td><%= product.brand_name %></td>
+    </tr>
+    <%- end -%>
+  </tbody>
+</table>
+
+<%= paginate(@products) %>
