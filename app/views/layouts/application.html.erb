@@ -4,7 +4,6 @@
     <title>Brocade</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= render 'layouts/favicon' -%>
     <%# <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> %>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -12,7 +11,6 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/analytics' if Rails.env.production? %>
   </head>
-
   <body>
     <%= render 'layouts/navbar' -%>
     <div class="container">
