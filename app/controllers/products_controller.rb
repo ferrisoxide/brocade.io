@@ -1,15 +1,11 @@
 class ProductsController < ApplicationController
 
-  include Rails::Pagination
+  include ProductSearch
 
   before_action :set_product, only: [:show, :update, :destroy]
 
   def index
-    @products = if params[:query]
-      paginate(Product.full_text_search(params[:query].split))
-    else
-      paginate(Product.all)
-    end
+    @products = product_search(params)
   end
 
   def show

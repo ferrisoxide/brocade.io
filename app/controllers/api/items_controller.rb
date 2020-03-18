@@ -1,14 +1,11 @@
 class Api::ItemsController < ApplicationController
-  include Rails::Pagination
+
+  include ProductSearch
 
   before_action :set_item, only: [:show, :update, :destroy]
 
   def index
-    @items = if params[:query]
-      Product.full_text_search(params[:query].split)
-    else
-      paginate(Product.all)
-    end
+    @items = product_search(params)
   end
 
   def show

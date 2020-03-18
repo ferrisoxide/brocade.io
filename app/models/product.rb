@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   scope :full_text_search, ->(terms) {
     where([
       FULL_TEXT_SEARCH_SQL,
-      { terms: Array.wrap(terms).join(' & ') }
+      { terms: map_search_terms(terms) }
     ])
   }
 
@@ -25,4 +25,11 @@ class Product < ApplicationRecord
   SQL
 
   private_constant :FULL_TEXT_SEARCH_SQL
+
+  def self.map_search_terms(terms)
+    Array
+      .wrap(terms)
+      .map{ |term| "#{term}:*" }
+      .join(' & ')
+  end
 end
