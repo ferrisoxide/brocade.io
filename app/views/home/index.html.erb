@@ -1,8 +1,188 @@
-<section class="hero is-light">
+<section class="hero is-fullheight is-default is-bold">
   <div class="hero-body">
-    <div class="container has-text-centered">
-      <h1 class="title">Brocade.io</h1>
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-5 is-offset-1 landing-caption">
+          <span>
+          Free and open product database
+          </span>
+          <h1 class="title is-1 is-bold is-spaced">
+            Brocade.io
+          </h1>
+        </div>
+        <div class="column is-4 is-offset-1">
+          <%= form_tag(products_path, method: :get) do %>
+            <div class="field">
+              <label>Search...</label>
+              <div class="control">
+                <div class="field is-medium">
+                  <%= text_field_tag :query, nil, class: 'input is-medium', placeholder: 'by barcode or text' %>
+                </div>
+              </div>
+              <div class="has-text-right">
+              <label class="is-size-7">
+                ... from <%= pluralize(Product.count, 'products') %>
+                </label>
+              </div>
+            </div>
+          <% end %>
+        </div>
 
+      </div>
     </div>
+  </div>
+</section>
+
+<section id="features" class="section section-feature-grey is-medium">
+  <div class="container">
+    <div class="title-wrapper has-text-centered">
+      <h2 class="title is-2">Freely Available Product Database</h2>
+      <h3 class="subtitle is-5 is-muted">Open code. Open data. Open access</h3>
+      <div class="divider is-centered"></div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="columns">
+        <div class="column is-one-third">
+          <div class="feature-card is-bordered has-text-centered revealOnScroll delay-1" data-animation="fadeInLeft">
+            <div class="card-title">
+              <h4>Open Source</h4>
+            </div>
+            <div class="card-text">
+              <p>The source for Brocade.io is available under an open source license.</p>
+              <p>
+                You are free to modify the code, install and run your own copy of the application and
+                contribute back to the project per the <a target="_blank" href="https://github.com/ferrisoxide/brocade.io/blob/master/LICENSE">
+                conditions of the license</a>.
+              </p>
+            </div>
+            <div class="card-action">
+              <a target="_blank" href="https://github.com/ferrisoxide/brocade.io" class="button btn-align-md accent-btn raised">Visit Project</a>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="feature-card is-bordered has-text-centered revealOnScroll delay-2" data-animation="fadeInLeft">
+            <div class="card-title">
+              <h4>Community-Driven Data</h4>
+            </div>
+            <div class="card-text">
+              <p>All data is available under an <a href="https://creativecommons.org/publicdomain/zero/1.0/">open license</a>.</p>
+            </div>
+            <div class="card-action">
+              <%= link_to 'Read More', data_license_path, class: "button btn-align-md secondary-btn raised", target: :blanks %>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="feature-card is-bordered has-text-centered revealOnScroll delay-3" data-animation="fadeInLeft">
+            <div class="card-title">
+              <h4>Documented API</h4>
+            </div>
+            <div class="card-icon">
+            </div>
+            <div class="card-text">
+              <p>Brocade.io has an API for reading and writing product data. Read-access is available without any registration,
+              while write access <em>may</em> require access keys.
+              </p>
+              <p>We replicate part of the API provided by <a href="http://www.datakick.org">datakick.org</a>
+              to allow compatibility with existing Datakick client tools.</p>
+              <p>The API is stil a work-in-progress. We'll be posting more details here as we roll out new features.
+            </div>
+            <div class="card-action">
+              <%= link_to 'Read More', documentation_path, target: :blank, class: "button btn-align-md primary-btn raised"%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-medium">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-centered-tablet-portrait">
+        <h2 class="title section-title">We want to build the best service for sharing product data</h2>
+        <h3 class="subtitle is-4 is-muted">And we can't do it without you</h3>
+        <div class="divider"></div>
+      </div>
+      <div class="column is-8 mt-60">
+
+        <!-- icon block -->
+        <article class="media icon-box">
+          <figure class="media-left">
+            <p class="image">
+              <img class="lazy"
+                 data-src="assets/images/illustrations/icons/laptop-globe.svg">
+            </p>
+          </figure>
+          <div class="media-content mt-50">
+            <div class="content">
+              <p>
+                <span class="icon-box-title">Work on the open source project.</span>
+                <span class="icon-box-text">
+                  Fork the code, create pull requests, log bug reports or
+                  suggest news features over at the <a href="https://github.com/ferrisoxide/brocade.io">Github project</a>.</span>
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="media icon-box">
+          <figure class="media-left">
+            <p class="image">
+              <img class="lazy" data-src="assets/images/illustrations/icons/doc-sync.svg">
+            </p>
+          </figure>
+          <div class="media-content mt-50">
+            <div class="content">
+              <p>
+                <span class="icon-box-title">Contribute to the database.</span>
+                <span class="icon-box-text">
+                What products do you have in arms reach? Even adding one or two items you find around the home or your office helps us expand the database. Create an account and start contributing.</span>
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- article class="media icon-box">
+          <figure class="media-left">
+            <p class="image">
+              <img class="lazy" data-src="assets/images/illustrations/icons/mobile-feed.svg">
+            </p>
+          </figure>
+          <div class="media-content mt-50">
+            <div class="content">
+              <p>
+                <span class="icon-box-title">Become a backer.</span>
+                <span class="icon-box-text">
+                By supporting us through Patreon or the Github Sponsors programme,
+                you help us maintain the server infrastructure and add more features to the service.
+                </span>
+              </p>
+            </div>
+          </div>
+        </article-->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta" class="section section-feature-grey is-medium">
+  <div class="container">
+    <div class="title-wrapper has-text-centered">
+      <h2 class="title is-2">Thank You</h2>
+      <h3 class="subtitle is-5 is-muted">Just by using our site you're helping us to improve the service.</h3>
+    </div>
+
+    <p class="has-text-centered mt-20">
+      We'd also like to shout out to the people who have helped get this project off the ground.
+    </p>
+    <p class="has-text-centered mt-20">
+    In particular we want to acknowledge the work done by <a href="https://github.com/ankane">@ankane</a>,
+    for his efforts in the development of the <a href='https://www.datakick.org'>Datakick</a> service
+    that inspired Brocade.io.
+    </p>
   </div>
 </section>

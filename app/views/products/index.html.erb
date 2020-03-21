@@ -1,9 +1,6 @@
 <p><%= product_count(@products) %></p>
 
-<%= form_tag(products_path, method: :get) do %>
-  Search <%= text_field_tag :query %>
-  <%= submit_tag 'Search' %>
-<% end %>
+<%= render 'search_form' %>
 
 <table class="table">
   <thead>
