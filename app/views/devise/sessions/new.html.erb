@@ -1,13 +1,13 @@
-<h2>Log in</h2>
+<%= render 'devise/shared/tabs', locals: { active: :sign_in } %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, class: 'label' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", type: 'email' %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password, class: 'label' %>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -18,8 +18,8 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="control">
+    <%= f.submit "Log in", class: "button is-primary"  %>
   </div>
 <% end %>
 
