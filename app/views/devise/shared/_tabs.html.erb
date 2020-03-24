@@ -1,0 +1,10 @@
+<div class="tabs is-boxed">
+  <ul>
+    <%= content_tag(:li, class: ('is-active' if locals[:active] == :sign_up)) do %>
+      <%= link_to 'Sign Up', new_user_registration_path %>
+    <% end %>
+    <%= content_tag(:li, class: ('is-active' if locals[:active] == :sign_in)) do %>
+      <%= link_to 'Sign In', new_user_session_path %>
+    <% end %>
+  </ul>
+</div>

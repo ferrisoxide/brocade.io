@@ -1,0 +1,11 @@
+<nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-end">
+      <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-item is-secondary modal-trigger") %>
+      <% else %>
+        <%= link_to('Sign in', new_user_session_path, class: "navbar-item is-secondary modal-trigger") %>
+      <% end %>
+    </div>
+  </div>
+</nav>

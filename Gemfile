@@ -35,9 +35,12 @@ gem 'devise'
 gem 'kaminari'
 gem 'api-pagination'
 
+gem 'mailjet'
+
 group :development, :test do
   gem 'brakeman'
   gem 'bundler-audit'
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'flay'
   gem 'pry'
