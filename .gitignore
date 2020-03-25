@@ -33,3 +33,6 @@ yarn-debug.log*
 
 # OS cruft
 .DS_Store
+
+# Datakick image data (temporarily stored locally)
+db/seeds/datakick/images/*
