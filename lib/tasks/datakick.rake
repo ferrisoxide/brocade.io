@@ -16,7 +16,7 @@ end
 namespace :datakick do
 
   namespace :download do
-    desc "Download datakick-sorced images and store in db/seeds/datakick"
+    desc "Download datakick-sourced images and store in db/seeds/datakick"
     task images: :environment do
       base_download_path = File.join(Rails.root, 'db', 'seeds', 'datakick', 'images')
 
