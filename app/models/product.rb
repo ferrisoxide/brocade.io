@@ -16,6 +16,26 @@ class Product < ApplicationRecord
     ])
   }
 
+  # TODO Move title into en.yml
+  NUTRITION_FACTS_PROPERTIES = {
+    serving_size: { type: :text },
+    servings_per_container: { type: :text },
+    calories: { type: :number },
+    calories_from_fat: { type: :number },
+    fat: { unit: :g, type: :number, title: 'Total Fat' },
+    saturated_fat: { unit: :g, type: :number },
+    trans_fat: { unit: :g, type: :number },
+    polyunsaturated_fat: { unit: :g, type: :number },
+    monounsaturated_fat: { unit: :g, type: :number },
+    cholesterol: { unit: :mg, type: :number },
+    sodium: { unit: :mg, type: :number },
+    potassium: { unit: :mg, type: :number },
+    carbohydrate: { unit: :g, type: :number, title: 'Total Carbohydrate' },
+    fiber: { unit: :g, type: :number, title: 'Dietary Fibre' },
+    sugars: { unit: :g, type: :number },
+    protein: { unit: :g, type: :number }
+  }.freeze
+
   private
 
   FULL_TEXT_SEARCH_SQL = <<~SQL

@@ -1,0 +1,52 @@
+<div class="column is-4 is-offset-4">
+  <%= form_with(model: product, local: true) do |form| %>
+    <% if product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+        <ul>
+          <% product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <label class="label">GTIN</label>
+      <div class="control">
+        <%= form.text_field :gtin, class: 'input', disabled: product.persisted? %>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Brand</label>
+      <div class="control">
+        <%= form.text_field :brand_name, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <%= form.text_field :name, class: 'input' %>
+      </div>
+    </div>
+
+    <% product.properties.each do |key, value| %>
+      <div class="field">
+        <label class="label"><%= title_for_property(key) %></label>
+        <div class="control has-icons-right">
+          <input name="product[properties][<%= key %>]" type=<%= type_for_property(key) %> value="<%= value %>" class="input" />
+          <span class="icon is-small is-right">
+            <%= unit_for_property(key) %>
+          </span>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
