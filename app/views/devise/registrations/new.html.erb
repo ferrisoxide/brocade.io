@@ -1,5 +1,5 @@
 <div class="column is-4 is-offset-4">
-  <%= render 'devise/shared/tabs', locals: { active: :sign_up } %>
+  <%= render 'devise/shared/tabs' %>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>

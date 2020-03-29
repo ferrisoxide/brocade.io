@@ -1,4 +1,4 @@
-<div class="column is-4 is-offset-4">
+<div class="column is-6 is-offset-2">
   <%= form_with(model: product, local: true) do |form| %>
     <% if product.errors.any? %>
       <div id="error_explanation">
@@ -13,40 +13,63 @@
     <% end %>
 
     <div class="field">
-      <label class="label">GTIN</label>
+      <label class="label is-small">GTIN</label>
       <div class="control">
-        <%= form.text_field :gtin, class: 'input', disabled: product.persisted? %>
+        <%= form.text_field :gtin, class: 'input is-small', disabled: product.persisted? %>
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Brand</label>
+      <label class="label is-small">Brand</label>
       <div class="control">
-        <%= form.text_field :brand_name, class: 'input' %>
+        <%= form.text_field :brand_name, class: 'input is-small' %>
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Name</label>
+      <label class="label is-small">Name</label>
       <div class="control">
-        <%= form.text_field :name, class: 'input' %>
+        <%= form.text_field :name, class: 'input is-small' %>
       </div>
     </div>
 
-    <% product.properties.each do |key, value| %>
-      <div class="field">
-        <label class="label"><%= title_for_property(key) %></label>
-        <div class="control has-icons-right">
-          <input name="product[properties][<%= key %>]" type=<%= type_for_property(key) %> value="<%= value %>" class="input" />
-          <span class="icon is-small is-right">
-            <%= unit_for_property(key) %>
-          </span>
-        </div>
+    <% (product.properties.keys.map(&:to_sym) - PropertySet::ALL.keys).each do |key| %>
+      <%= render 'property_field', product: product, key: key %>
+    <%- end -%>
+
+    <section>
+      <%- if PropertySet::NUTRITION_FACTS.keys.none? { |key| product.properties[key.to_s].present? } -%>
+        <%= link_to 'Add nutrition facts', nil, class: 'property-set-link', data: { target: 'nutrition-facts' } %>
+      <%- end -%>
+
+      <div id="nutrition-facts">
+        <h3>Nutrition Facts</h3>
+        <% PropertySet::NUTRITION_FACTS.keys.each do |key| %>
+          <%= render 'property_field', product: product, key: key %>
+        <%- end -%>
       </div>
-    <% end %>
+    </section>
+
+    <section>
+      <%- if PropertySet::INGREDIENTS.keys.none? { |key| product.properties[key.to_s].present? } -%>
+        <%= link_to 'Add ingredients', nil, class: 'property-set-link', data: { target: 'ingredients' } %>
+      <%- end -%>
+
+      <div id="ingredients">
+        <h3>Ingredients</h3>
+        <% PropertySet::INGREDIENTS.keys.each do |key| %>
+          <%= render 'property_field', product: product, key: key %>
+        <%- end -%>
+      </div>
+    </section>
 
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit class: "button is-primary" %>
     </div>
+
+    <p>
+    By submitting changes, you agree to release your contribution
+    under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0 1.0 Universal</a>
+    </p>
   <% end %>
 </div>

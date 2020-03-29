@@ -1,0 +1,18 @@
+<% unit = unit_for_property(key) %>
+
+<div class="field">
+  <label class="label is-small"><%= title_for_property(key) %></label>
+  <div class="control <%= 'has-icons-right' if unit.present? %>">
+    <input
+      name="product[properties][<%= key %>]"
+      type=<%= type_for_property(key) %>
+      value="<%= product.properties[key] %>"
+      class="input is-small"
+    />
+    <% if unit.present? %>
+      <span class="icon is-small is-right">
+        <%= unit %>
+      </span>
+    <%- end -%>
+  </div>
+</div>

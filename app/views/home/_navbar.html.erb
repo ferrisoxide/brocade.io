@@ -2,9 +2,23 @@
   <div class="container">
     <div class="navbar-end">
       <% if user_signed_in? %>
-        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-item is-secondary modal-trigger") %>
+        <%=
+          link_to(
+            'Logout',
+            destroy_user_session_path,
+            method: :delete,
+            class: "navbar-item is-secondary modal-trigger button is-primary"
+          )
+
+        %>
       <% else %>
-        <%= link_to('Sign in', new_user_session_path, class: "navbar-item is-secondary modal-trigger") %>
+        <%=
+          link_to(
+            'Sign in',
+            new_user_session_path,
+            class: "navbar-item is-secondary modal-trigger button is-primary"
+          )
+        %>
       <% end %>
     </div>
   </div>

@@ -1,79 +1,70 @@
-<nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <img src="assets/images/logos/bulmaplay-logo.png" alt="" width="88" height="40">
-            </a>
 
-            <a class="navbar-item is-hidden-desktop is-hidden-tablet">
-                <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
-                    <svg width="1000px" height="1000px">
-                        <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
-                        <path class="path2" d="M 300 500 L 700 500"></path>
-                        <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
-                    </svg>
-                    <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
-                </div>
-            </a>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <%= link_to root_path, class: 'navbar-item' do -%>
+      <%= image_pack_tag 'media/images/barcode.png', height: '28px' %>
+    <%- end -%>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <%= link_to 'Brocade.io', root_path, class: 'navbar-item' %>
+      <%= link_to 'Products', products_path, class: 'navbar-item' %>
+      <%= link_to 'Add Product', new_product_path, class: 'navbar-item' %>
+      <%= link_to 'Documentation', documentation_path, class: 'navbar-item' %>
+
+      <!--div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+          <hr class="navbar-divider">
+          <a href="https://github.com/ferrisoxide/brocade.io/issues" class="navbar-item">
+            Report an issue
+          </a>
         </div>
-
-        <div id="navbar-menu" class="navbar-menu is-static">
-
-            <div class="navbar-start">
-                <a class="navbar-item is-hidden-mobile">
-                    <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
-                        <svg width="1000px" height="1000px">
-                            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
-                            <path class="path2" d="M 300 500 L 700 500"></path>
-                            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
-                        </svg>
-                        <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
-                    </div>
-                </a>
-            </div>
-
-            <div class="navbar-end">
-                <a href="#features" class="navbar-item is-secondary">
-                    Features
-                </a>
-                <a href="#cta" class="navbar-item is-secondary">
-                    CTA
-                </a>
-                <a href="#contact" class="navbar-item is-secondary">
-                    Contact
-                </a>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        Dropdown
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            Dropdown item
-                        </a>
-                        <a class="navbar-item">
-                            Dropdown item
-                        </a>
-                        <a class="navbar-item">
-                            Dropdown item
-                        </a>
-                    </div>
-                </div>
-                <a href="#" class="navbar-item is-secondary modal-trigger" data-modal="auth-modal">
-                    Sign In
-                </a>
-                <a target="_blank" href="{{ data.links.product }}" class="navbar-item">
-                    <span class="button signup-button rounded secondary-btn raised">
-                        Read More
-                    </span>
-                </a>
-            </div>
-        </div>
+      </div-->
     </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <% if user_signed_in? %>
+            <%=
+              link_to(
+                'Logout',
+                destroy_user_session_path,
+                method: :delete,
+                class: "navbar-item is-secondary modal-trigger button is-primary"
+              )
+            %>
+          <% else %>
+            <%=
+              link_to(
+                'Sign in',
+                new_user_session_path,
+                class: "navbar-item is-secondary modal-trigger button is-primary"
+              )
+            %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>

@@ -1,5 +1,4 @@
 <section class="hero is-fullheight is-default is-bold">
-  <%= render 'navbar' %>
   <div class="hero-body">
     <div class="container">
       <div class="columns is-vcentered">
@@ -139,9 +138,10 @@
           <div class="media-content mt-50">
             <div class="content">
               <p>
-                <span class="icon-box-title">Contribute to the database.</span>
+                <span class="icon-box-title">Add to the database.</span>
                 <span class="icon-box-text">
-                What products do you have in arms reach? Even adding one or two items you find around the home or your office helps us expand the database. Create an account and start contributing.</span>
+                What products do you have in arms reach? Even entering data for one or two items you find around
+                the home or your office helps us expand the database. <%= link_to 'Create an account', new_user_registration_path %> and start contributing.</span>
               </p>
             </div>
           </div>

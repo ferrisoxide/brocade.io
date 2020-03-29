@@ -44,7 +44,14 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name)
+    params
+      .require(:product)
+      .permit(
+        :gtin,
+        :name,
+        :brand_name,
+        properties: {}
+      )
   end
 
 end

@@ -4,15 +4,14 @@ module ProductsHelper
   end
 
   def unit_for_property(key)
-    Product::NUTRITION_FACTS_PROPERTIES.dig(key.to_sym, :unit) || ''
+    PropertySet::ALL.dig(key.to_sym, :unit) || ''
   end
 
   def title_for_property(key)
-    Product::NUTRITION_FACTS_PROPERTIES.dig(key.to_sym, :title) || key.humanize
+    PropertySet::ALL.dig(key.to_sym, :title) || key.to_s.humanize
   end
 
   def type_for_property(key)
-    Product::NUTRITION_FACTS_PROPERTIES.dig(key.to_sym, :type) || 'text'
+    PropertySet::ALL.dig(key.to_sym, :type) || 'text'
   end
-
 end
