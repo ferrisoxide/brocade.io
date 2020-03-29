@@ -23,5 +23,14 @@ module PropertySet
     ingredients: { type: :text },
   }
 
-  ALL = NUTRITION_FACTS.merge(INGREDIENTS)
+  PUBLISHING_DETAILS = {
+    author: { type: :text },
+    format: { type: :text },
+    publisher: { type: :text },
+    pages: { type: :number }
+  }
+
+  ALL = NUTRITION_FACTS
+    .merge(INGREDIENTS)
+    .merge(PUBLISHING_DETAILS)
 end

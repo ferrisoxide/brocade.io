@@ -63,6 +63,19 @@
       </div>
     </section>
 
+    <section>
+      <%- if PropertySet::PUBLISHING_DETAILS.keys.none? { |key| product.properties[key.to_s].present? } -%>
+        <%= link_to 'Add publishing details', nil, class: 'property-set-link', data: { target: 'publishing_details' } %>
+      <%- end -%>
+
+      <div id="ingredients">
+        <h3>Publishing Details</h3>
+        <% PropertySet::PUBLISHING_DETAILS.keys.each do |key| %>
+          <%= render 'property_field', product: product, key: key %>
+        <%- end -%>
+      </div>
+    </section>
+
     <div class="actions">
       <%= form.submit class: "button is-primary" %>
     </div>

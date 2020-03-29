@@ -51,7 +51,11 @@ class ProductsController < ApplicationController
         :name,
         :brand_name,
         properties: {}
-      )
+      ).tap do |permitted_params|
+        permitted_params[:properties].keys.each do |key|
+          permitted_params[:properties].delete(key) unless permitted_params[:properties][key].present?
+        end
+      end
   end
 
 end
