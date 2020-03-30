@@ -1,6 +1,47 @@
 @import 'bulma_overrides';
 @import '~bulma';
 
+// Hero
+.hero-body {
+  padding-top: 0px;
+}
+
+// Sign up / login button
+
+.secondary-btn {
+  border-color: $secondary;
+  background-color: $secondary;
+  color: $white;
+}
+
+.feature-card {
+  height: 320px;
+  background-color: $white;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.feature-card.is-bordered {
+  border: 1px solid #ededed;
+}
+
+.feature-card > .card-title h4 {
+  padding-top: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.feature-card > .card-icon {
+  span.icon {
+    font-size: 2rem;
+    padding-top: 1.5rem;
+  }
+}
+
+.feature-card > .card-text {
+  padding-left: 35px;
+  padding-right: 35px;
+}
 // Footer
 .footer-logo {
   img {

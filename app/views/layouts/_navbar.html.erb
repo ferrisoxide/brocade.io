@@ -1,3 +1,4 @@
+
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <%= link_to root_path, class: 'navbar-item' do -%>
@@ -15,22 +16,57 @@
     <div class="navbar-start">
       <%= link_to 'Brocade.io', root_path, class: 'navbar-item' %>
       <%= link_to 'Products', products_path, class: 'navbar-item' %>
+      <%- if user_signed_in? -%>
+        <%= link_to 'Add Product', new_product_path, class: 'navbar-item' %>
+      <%- end -%>
       <%= link_to 'Documentation', documentation_path, class: 'navbar-item' %>
+
+      <!--div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+          <hr class="navbar-divider">
+          <a href="https://github.com/ferrisoxide/brocade.io/issues" class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div-->
     </div>
 
-    <!--
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
+          <% if user_signed_in? %>
+            <%=
+              link_to(
+                'Logout',
+                destroy_user_session_path,
+                method: :delete,
+                class: "navbar-item is-rounded button secondary-btn"
+              )
+            %>
+          <% else %>
+            <%=
+              link_to(
+                'Sign in',
+                new_user_session_path,
+                class: "navbar-item is-rounded button secondary-btn"
+              )
+            %>
+          <% end %>
         </div>
       </div>
-    </div> -->
-
+    </div>
   </div>
 </nav>
