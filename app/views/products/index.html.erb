@@ -1,8 +1,28 @@
+
+
+<div class="columns">
+  <div class="column">
+    <%= form_tag(products_path, method: :get) do %>
+      <div class="field">
+        <div class="control">
+          <div class="field is-medium">
+            <%= text_field_tag :query, params[:query], class: 'input is-small', placeholder: 'Search' %>
+          </div>
+        </div>
+      </div>
+    <%- end -%>
+  </div>
+  <div class="column">
+    <div class="is-pulled-right">
+      <%= link_to_prev_page @products, "< Prev", params: params, class: "button is-small" %>
+      <%= link_to_next_page @products, "Next >", params: params, class: "button is-small" %>
+    </div>
+  </div>
+ </div>
+
 <p><%= product_count(@products) %></p>
 
-<%= render 'search_form' %>
-
-<table class="table">
+<table class="table is-striped">
   <thead>
     <tr>
       <th>GTIN</th>
@@ -21,4 +41,11 @@
   </tbody>
 </table>
 
-<%= paginate(@products) %>
+<div class="colums">
+  <div class="column">
+    <div class="is-pulled-right">
+      <%= link_to_prev_page @products, "< Prev", params: params, class: "button is-small" %>
+      <%= link_to_next_page @products, "Next >", params: params, class: "button is-small" %>
+    </div>
+  </div>
+ </div>

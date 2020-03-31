@@ -6,7 +6,7 @@ module ProductSearch
   end
 
   def product_search(params)
-    if params[:query]
+    if params[:query].present?
       paginate(Product.full_text_search(params[:query].split))
     else
       paginate(Product.all)
