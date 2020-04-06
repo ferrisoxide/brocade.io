@@ -30,7 +30,18 @@ module PropertySet
     pages: { type: :number }
   }
 
+  PACK_DETAILS = {
+    weight_g: { unit: :g, type: :number },
+    weight_ounce: { unit: :oz, type: :number },
+    volume_ml: { unit: :ml, type: :number },
+    volume_fluid_ounce: { unit: :floz, type: :number },
+    unit_count: { type: :number },
+    alcohol_by_volume: { type: :number },
+    alcohol_by_weight: { type: :number },
+  }
+
   ALL = NUTRITION_FACTS
     .merge(INGREDIENTS)
     .merge(PUBLISHING_DETAILS)
+    .merge(PACK_DETAILS)
 end
