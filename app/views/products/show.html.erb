@@ -1,13 +1,16 @@
-<%- if user_signed_in? -%>
-  <%= link_to 'Edit', edit_product_path(@product) %>
-<%- end -%>
-<h3><%= @product.name %></h3>
-<h2><%= @product.gtin %></h2>
 
-<%- if @product.brand_name.present?  %>
-<p><strong>Brand Name</strong> <%= @product.brand_name %></p>
-<%- end -%>
+<div class="column is-6 is-offset-2">
+  <%- if user_signed_in? -%>
+    <%= link_to 'Edit', edit_product_path(@product) %>
+  <%- end -%>
+  <h3><%= @product.name %></h3>
+  <h2><%= @product.gtin %></h2>
 
-<%- @product.properties.each do |key, value| -%>
-  <p><strong><%= key.humanize %></strong> <%= value %></p>
-<%- end -%>
+  <%- if @product.brand_name.present?  %>
+  <p><strong>Brand Name</strong> <%= @product.brand_name %></p>
+  <%- end -%>
+
+  <%- @product.properties.each do |key, value| -%>
+    <p><strong><%= key.humanize %></strong> <%= value %></p>
+  <%- end -%>
+</div>

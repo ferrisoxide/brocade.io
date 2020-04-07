@@ -21,7 +21,7 @@
               </div>
               <div class="has-text-right">
               <label class="is-size-7">
-                ... from <%= pluralize(Product.count, 'products') %>
+                ... from <%= humanize_product_count(Product.count) %>
                 </label>
               </div>
             </div>

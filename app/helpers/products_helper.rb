@@ -1,6 +1,9 @@
 module ProductsHelper
-  def product_count(products)
-    pluralize(@products.total_count, 'products')
+  def humanize_product_count(product_count)
+    [
+      number_with_delimiter(product_count),
+      'products'.pluralize(product_count)
+    ].join(' ')
   end
 
   def unit_for_property(key)
