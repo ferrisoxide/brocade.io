@@ -1,7 +1,9 @@
-class Product < ApplicationRecord
-  # TODO add validations, etc
+# frozen_string_literal: true
 
-  validates :gtin, presence: true
+class Product < ApplicationRecord
+  has_paper_trail
+
+  validates :gtin, presence: true, uniqueness: true
   validates :name, presence: true
 
   def self.from_param(param)
@@ -12,11 +14,11 @@ class Product < ApplicationRecord
     gtin
   end
 
-  scope :full_text_search, ->(terms) {
+  scope :full_text_search, lambda { |terms|
     where([
-      FULL_TEXT_SEARCH_SQL,
-      { terms: map_search_terms(terms) }
-    ])
+            FULL_TEXT_SEARCH_SQL,
+            { terms: map_search_terms(terms) }
+          ])
   }
 
   private
@@ -32,7 +34,7 @@ class Product < ApplicationRecord
   def self.map_search_terms(terms)
     Array
       .wrap(terms)
-      .map{ |term| "#{term}:*" }
+      .map { |term| "#{term}:*" }
       .join(' & ')
   end
 end

@@ -35,6 +35,8 @@ gem 'devise'
 gem 'kaminari'
 gem 'api-pagination'
 
+gem 'paper_trail'
+
 gem 'mailjet'
 
 group :development, :test do
