@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   validates :name, presence: true
 
   def self.from_param(param)
-    find_by_gtin!(param)
+    by_gtin(param).first!
   end
 
   def to_param
@@ -15,10 +15,18 @@ class Product < ApplicationRecord
   end
 
   scope :full_text_search, lambda { |terms|
-    where([
-            FULL_TEXT_SEARCH_SQL,
-            { terms: map_search_terms(terms) }
-          ])
+    where(
+      [
+        FULL_TEXT_SEARCH_SQL,
+        { terms: map_search_terms(terms) }
+      ]
+    )
+  }
+
+  scope :by_gtin, lambda { |gtin|
+    where(
+      "gtin ~ '^(0)*#{digits_only(gtin)}$'"
+    )
   }
 
   private
@@ -36,5 +44,9 @@ class Product < ApplicationRecord
       .wrap(terms)
       .map { |term| "#{term}:*" }
       .join(' & ')
+  end
+
+  def self.digits_only(string)
+    string.delete("^0-9")
   end
 end

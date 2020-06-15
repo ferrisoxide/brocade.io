@@ -4,6 +4,8 @@ class Api::ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :update, :destroy]
 
+  rescue_from ActiveRecord::RecordNotFound, with: :product_not_found
+
   def index
     @items = product_search(params)
   end
@@ -40,8 +42,12 @@ class Api::ItemsController < ApplicationController
     @item = if params[:id] == '00000000000000'
       test_item
     else
-      Product.find_by(gtin: params[:id])
+      Product.from_param(params[:id])
     end
+  end
+
+  def product_not_found(_exception)
+    render json: { error: "Product '#{params[:id]}' not found" }, status: :not_found 
   end
 
   def item_params
