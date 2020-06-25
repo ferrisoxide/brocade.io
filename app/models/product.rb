@@ -24,9 +24,10 @@ class Product < ApplicationRecord
   }
 
   scope :by_gtin, lambda { |gtin|
-    where(
-      "gtin ~ '^(0)*#{digits_only(gtin)}$'"
-    )
+
+    gtin_14 = gtin.to_s.rjust(14, '0')
+    gtin_13 = gtin_14.slice(1, 13)
+    where(gtin: padded_gtins(gtin))
   }
 
   private
@@ -46,7 +47,12 @@ class Product < ApplicationRecord
       .join(' & ')
   end
 
-  def self.digits_only(string)
-    string.delete("^0-9")
+  def self.padded_gtins(gtin)
+    return [gtin] if gtin.length == 14 && gtin[0] != '0'
+
+    gtin_14 = gtin.rjust(14, '0')
+    gtin_13 = gtin_14.slice(1, 13)
+
+    [gtin_14, gtin_13]
   end
 end
