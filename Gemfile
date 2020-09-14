@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3',  '>= 6.0.3.2'
+gem 'rails', '~> 6.0.3',  '>= 6.0.3.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -47,7 +47,9 @@ group :development, :test do
   gem 'flay'
   gem 'pry'
   gem 'pry-byebug'
-  gem 'pry-coolline'
+  # TODO See https://github.com/pry/pry-coolline/issues/36
+  gem 'pry-coolline', github: 'owst/pry-coolline', branch: 'support_new_pry_config_api'
+  # gem 'pry-coolline'
   gem 'pry-stack_explorer'
   gem 'rspec-rails'
   gem 'rubocop-performance'
