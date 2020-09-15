@@ -110,6 +110,7 @@ NB The JSON payload for creating/updating is slightly different to the data retu
     ...
   }
 }
+```
 
 Right now you can pretty well put any keys in here, but we're thinking of adding the idea of property "sets" - common attributes for similar products (_e.g._ for books allow the keys `author`, `number_of_pages`, _etc_ ). The UI has something like this now, but it's not currently supported in the API.
 
