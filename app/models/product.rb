@@ -40,19 +40,26 @@ class Product < ApplicationRecord
 
   private_constant :FULL_TEXT_SEARCH_SQL
 
-  def self.map_search_terms(terms)
-    Array
-      .wrap(terms)
-      .map { |term| "#{term}:*" }
-      .join(' & ')
-  end
+  class << self
 
-  def self.padded_gtins(gtin)
-    return [gtin] if gtin.length == 14 && gtin[0] != '0'
+    def map_search_terms(terms)
+      Array
+        .wrap(terms)
+        .map { |term| "#{sanitize_term(term)}:*" }
+        .join(' & ')
+    end
 
-    gtin_14 = gtin.rjust(14, '0')
-    gtin_13 = gtin_14.slice(1, 13)
+    def padded_gtins(gtin)
+      return [gtin] if gtin.length == 14 && gtin[0] != '0'
 
-    [gtin_14, gtin_13]
+      gtin_14 = gtin.rjust(14, '0')
+      gtin_13 = gtin_14.slice(1, 13)
+
+      [gtin_14, gtin_13]
+    end
+
+    def sanitize_term(term)
+      term.gsub(/([^a-zA-Z0-9 -])/, "\\\\\\1")
+    end
   end
 end
