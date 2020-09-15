@@ -119,6 +119,7 @@ Right now you can pretty well put any keys in here, but we're thinking of adding
 * Import image data from Datakick
 * Source more open product data
 * Improve front-end UI, add capacity to manage tokens
-* New `/products` endpoint with more features (leavig `/items` to avoid breaking the API early adopters)
+* New `/products` endpoint with more features (leaving `/items` to avoid breaking the API early adopters)
 * Implement [PKCE](https://tools.ietf.org/html/rfc7636)
 * Introduce 'property sets'
+* Clean up database, remove / fix non-GTIN14 records
