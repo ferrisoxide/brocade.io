@@ -93,8 +93,9 @@ curl -i -X POST -H "Content-Type: application/json" -H "Authorization: Bearer <y
 
 Updating requires a PUT, adding the GTIN to the end of the URL:
 
+```
 curl -i -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer <your token>" -d '{"name":"new test", "brand_name":"new brand", "properties": {"size":"12 inches"}}' https://www.brocade.io/api/items/00000000000002
-
+```
 
 NB The JSON payload for creating/updating is slightly different to the data returned via read access. Where the data retrieved is a simple flat list of key/value pairs, when pushing data to the API you will need to nest property values (anything other than `gtin`, `name` or `brand_name`) as a set of key/value pairs assigned to the `properties` key:
 
