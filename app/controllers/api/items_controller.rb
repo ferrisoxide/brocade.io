@@ -2,8 +2,11 @@ class Api::ItemsController < ApplicationController
 
   include ProductSearch
 
-  before_action :set_item, only: [:show, :update, :destroy]
+  protect_from_forgery with: :null_session
 
+  before_action :doorkeeper_authorize!, only: [:create, :update]
+  before_action :set_item, only: [:show, :update, :destroy]
+  
   rescue_from ActiveRecord::RecordNotFound, with: :product_not_found
 
   def index
@@ -13,28 +16,27 @@ class Api::ItemsController < ApplicationController
   def show
   end
 
-  # TODO Add
-  # def create
-  #   @item = Product.new(item_params)
+  def create
+    @item = Product.new(item_params)
 
-  #   respond_to do |format|
-  #     if @item.save
-  #       format.json { render :show, status: :created, location: @item }
-  #     else
-  #       format.json { render json: @item.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+    respond_to do |format|
+      if @item.save
+        format.json { render :show, status: :created, location: @item }
+      else
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-  # def update
-  #   respond_to do |format|
-  #     if @item.update(item_params)
-  #       format.json { render :show, status: :ok, location: @item }
-  #     else
-  #       format.json { render json: @item.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    respond_to do |format|
+      if @item.update(item_params)
+        format.json { render :show, status: :ok, location: @item }
+      else
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   private
 
@@ -51,7 +53,13 @@ class Api::ItemsController < ApplicationController
   end
 
   def item_params
-    params.fetch(:item, {})
+    params
+      .permit(
+        :gtin,
+        :name,
+        :brand_name,
+        properties: {}
+      )
   end
 
   # TODO the Datakick test item also has images attached.

@@ -2,9 +2,9 @@ class ProductsController < ApplicationController
 
   include ProductSearch
 
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  
   def index
     @products = product_search(params)
   end

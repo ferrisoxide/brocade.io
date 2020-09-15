@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # Authorisation / authentication
 gem 'devise'
+gem 'doorkeeper'
 
 # Pagination
 gem 'kaminari'
