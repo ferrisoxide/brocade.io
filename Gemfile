@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.7.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3',  '>= 6.0.3.3'
@@ -49,7 +49,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   # TODO See https://github.com/pry/pry-coolline/issues/36
-  gem 'pry-coolline', github: 'owst/pry-coolline', branch: 'support_new_pry_config_api'
+  # gem 'pry-coolline', github: 'owst/pry-coolline', branch: 'support_new_pry_config_api'
   # gem 'pry-coolline'
   gem 'pry-stack_explorer'
   gem 'rspec-rails'
