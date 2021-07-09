@@ -40,6 +40,10 @@ gem 'paper_trail'
 
 gem 'mailjet'
 
+# ETL
+gem 'kiba'
+gem 'kiba-common'
+
 group :development, :test do
   gem 'brakeman'
   gem 'bundler-audit'
