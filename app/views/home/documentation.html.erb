@@ -2,40 +2,24 @@
   <div class="container">
     <h1 class="title">API Documentation</h1>
 
+    <%= render partial: 'home/documentation/overview' %>
+
+    <h2 class="subtitle">Header Pagination Info</h2>
+
+    <h3>Header - <span class="is-family-monospace">links</span> - First Header</h3>
     <p>
-    By and large we're attempting to replicate the API provided by datakick.org (no longer available).
-    Consequently the text here has been copied from the 
-    <a href="https://web.archive.org/web/20200305234118/https://www.datakick.org/api" title="Wayback link">Datakick API documentation</a>, 
-    at least to get things started.
-    We'll update and refine the documentation as we go.
+      https://www.brocade.io/api/items?page=20&query=peanut+butter; rel="last", https://www.brocade.io/api/items?page=2&query=peanut+butter; rel="next"
     </p>
 
-    <p>
-    Currently Brocade.io has no support for images. Write access is available, albeit a little clunky. 
-    Refer to the project's <a href="https://github.com/ferrisoxide/brocade.io#api-access">README</a>
-    file for early-adopter access.
-    </p>
+    <h3>Header - <span class="is-family-monospace">links</span> - Subsequent Headers</h3>
+    
+    <p>NB include the previous and
+https://www.brocade.io/api/items?page=1&query=peanut+butter; rel="first", https://www.brocade.io/api/items?page=1&query=peanut+butter; rel="prev",
 
-    <h2 class="subtitle">Find an item</h2>
-    <p>Lookup an item by UPC or EAN</p>
-
-    <p>GET https://www.brocade.io/api/items/000000000000</p>
-
-    <h2 class="subtitle">Find an item</h2>
-    <p>Lookup an item by UPC or EAN</p>
-
-    <p>GET https://www.brocade.io/api/items/000000000000</p>
-
-    <h2 class="subtitle">List items</h2>
-    <p>GET https://www.brocade.io/api/items</p>
-
-    <p>Up to 100 items are returned by default.</p>
-
-    <p>Pagination info is returned in the Link header.</p>
-
-    <p>To search items, use the query parameter.</p>
-
-    <p>GET https://www.brocade.io/api/items?query=peanut+butter</p>
+    <p><span class="is-family-monospace">Header</span> - per-page & total<p>
+per-page - Results per page = 100
+total - Total number records = 1912
+total / per-page = Total Pages 19.12 rounded up = 20. Total is also found in Header - links last
 
   </div>
 </section>
