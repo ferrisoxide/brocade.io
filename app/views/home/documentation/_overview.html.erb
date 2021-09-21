@@ -1,0 +1,35 @@
+<h2 class="subtitle">Overview</h2>
+<p>
+By and large we're attempting to replicate the API provided by datakick.org (no longer available).
+Consequently the text here has been copied from the 
+<a href="https://web.archive.org/web/20200305234118/https://www.datakick.org/api" title="Wayback link">Datakick API documentation</a>, 
+at least to get things started.
+We'll update and refine the documentation as we go.
+</p>
+
+<p>
+Currently Brocade.io has no support for images. Write access is available, albeit a little clunky. 
+Refer to the project's <a href="https://github.com/ferrisoxide/brocade.io#api-access">README</a>
+file for early-adopter access.
+</p>
+
+<h2 class="subtitle">Find an item</h2>
+<p>Lookup an item by UPC or EAN</p>
+
+<p>GET https://www.brocade.io/api/items/000000000000</p>
+
+<h2 class="subtitle">Find an item</h2>
+<p>Lookup an item by UPC or EAN</p>
+
+<p>GET https://www.brocade.io/api/items/000000000000</p>
+
+<h2 class="subtitle">List items</h2>
+<p>GET https://www.brocade.io/api/items</p>
+
+<p>Up to 100 items are returned by default.</p>
+
+<p>Pagination info is returned in the Link header.</p>
+
+<p>To search items, use the query parameter.</p>
+
+<p>GET https://www.brocade.io/api/items?query=peanut+butter</p>
