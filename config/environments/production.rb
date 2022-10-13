@@ -64,6 +64,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.delivery_method = :mailjet
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -119,5 +121,5 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # Required by Devise
-  config.action_mailer.default_url_options = { host: 'www.brocade.io' }
+  config.action_mailer.default_url_options = { host: 'brocade.io' }
 end
