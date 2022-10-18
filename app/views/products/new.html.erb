@@ -1,3 +1,14 @@
-<h1>New Product</h1>
-
-<%= render 'form', product: @product %>
+<div class="mx-auto max-w-7xl px-4 sm:px-6">
+  <div class="bg-white shadow sm:rounded-lg">
+    <div class="px-4 py-5 sm:p-6">
+      <div class="sm:flex sm:items-start sm:justify-between">
+        <div>
+          <h3 class="text-lg font-medium leading-6 text-gray-900">New Product</h3>
+          <div class="mt-2 max-w-xl text-sm text-gray-500">
+            <%= render 'form', product: @product %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

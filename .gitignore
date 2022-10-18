@@ -36,3 +36,6 @@ yarn-debug.log*
 
 # Datakick image data (temporarily stored locally)
 db/seeds/datakick/images/*
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

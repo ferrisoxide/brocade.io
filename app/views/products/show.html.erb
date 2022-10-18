@@ -1,16 +1,25 @@
-
-<div class="column is-6 is-offset-2">
-  <%- if user_signed_in? -%>
-    <%= link_to 'Edit', edit_product_path(@product) %>
-  <%- end -%>
-  <h3><%= @product.name %></h3>
-  <h2><%= @product.gtin %></h2>
-
-  <%- if @product.brand_name.present?  %>
-  <p><strong>Brand Name</strong> <%= @product.brand_name %></p>
-  <%- end -%>
-
-  <%- @product.properties.each do |key, value| -%>
-    <p><strong><%= key.humanize %></strong> <%= value %></p>
-  <%- end -%>
+<div class="mx-auto max-w-7xl px-4 sm:px-6">
+  <div class="bg-white shadow sm:rounded-lg">
+    <div class="px-4 py-5 sm:p-6">
+      <div class="sm:flex sm:items-start sm:justify-between">
+        <div>
+          <h3 class="text-lg font-medium leading-6 text-gray-900"><%= @product.name %></h3>
+          <h2><%= @product.gtin %></h2>
+          <div class="mt-2 max-w-xl text-sm text-gray-500">
+            <%- if @product.brand_name.present?  %>
+              <p><strong>Brand Name</strong> <%= @product.brand_name %></p>
+            <%- end -%>
+              <%- @product.properties.each do |key, value| -%>
+              <p><strong><%= key.humanize %></strong> <%= value %></p>
+            <%- end -%>
+          </div>
+        </div>
+        <%- if user_signed_in? -%>
+          <div class="mt-5 sm:mt-0 sm:ml-6 sm:flex sm:flex-shrink-0 sm:items-center">
+            <%= link_to 'Edit', edit_product_path(@product), class: "inline-flex items-center rounded-md border border-transparent bg-orange-600 px-4 py-2 font-medium text-white shadow-sm hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 sm:text-sm" %>
+          </div>
+        <%- end -%>
+      </div>
+    </div>
+  </div>
 </div>

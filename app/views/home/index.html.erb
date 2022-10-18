@@ -1,198 +1,24 @@
-<section class="hero is-fullheight is-default is-bold">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-vcentered">
-        <div class="column is-5 is-offset-1 landing-caption">
-          <span>Free and open product database</span>
-          <h1 class="title is-1 is-bold is-spaced">
-            Brocade.io
-          </h1>
-        </div>
-        <div class="column is-4 is-offset-1">
-          <%= form_tag(products_path, method: :get) do %>
-            <div class="field">
-              <label>Search...</label>
-              <div class="control">
-                <div class="field is-medium">
-                  <%= text_field_tag :query, nil, class: 'input is-medium', placeholder: 'by barcode or text' %>
-                </div>
-              </div>
-              <div class="has-text-right">
-              <label class="is-size-7">
-                ... from <%= humanize_product_count(Product.count) %>
-                </label>
-              </div>
-            </div>
-          <% end %>
-        </div>
 
+<main class="mx-auto mt-16 max-w-7xl px-4 sm:mt-24">
+  <div class="grid grid-cols-2 gap-4">
+    <div class="text-center mt-6">
+      <h3>Free and open <span class="text-orange-600">product database</span></h3>
+      <h1 class="text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+        Brocade.io
+      </h1>
+    </div>
+    <div class="mx-auto mt-5 max-w-md sm:flex sm:justify-center md:mt-8">
+      <div>
+        <%= form_tag(products_path, method: :get) do %>
+          <label for="query" class="block text-sm font-medium text-gray-700 text-left">Search...</label>
+          <div class="mt-1">
+            <%= text_field_tag :query, nil, class: 'block w-full text-2xl rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500', placeholder: 'by barcode or text' %>
+          </div>
+          <label for="query" class="block text-sm font-small text-gray-700 text-right">
+            ... from <%= humanize_product_count(Product.count) %>
+          </label>
+        <% end %>
       </div>
     </div>
   </div>
-</section>
-
-<section id="features" class="section section-feature-grey is-medium">
-  <div class="container">
-    <div class="title-wrapper has-text-centered">
-      <h2 class="title is-2 is-spaced">Freely Available Product Database</h2>
-      <h3 class="subtitle is-5 is-muted is-spaced">Open code. Open data. Open access</h3>
-      <div class="divider is-centered"></div>
-    </div>
-
-    <div class="content-wrapper">
-      <div class="columns">
-        <div class="column is-one-third">
-          <div class="feature-card is-bordered has-text-centered">
-            <div class="card-title">
-              <h4>Open Source</h4>
-            </div>
-            <div class="card-icon">
-              <span class="icon">
-                <i class="fab fa-github"></i>
-              </span>
-            </div>
-            <div class="card-text">
-              <p>The source for Brocade.io is on Github, available under an open source license.</p>
-            </div>
-            <div class="card-action">
-              <a target="_blank" href="https://github.com/ferrisoxide/brocade.io" class="button btn-align-md accent-btn raised">Visit Project</a>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="feature-card is-bordered has-text-centered">
-            <div class="card-title">
-              <h4>Community-Driven Data</h4>
-            </div>
-            <div class="card-icon">
-              <span class="icon">
-                <i class="fab fa-creative-commons"></i>
-              </span>
-            </div>
-            <div class="card-text">
-              <p>All data is available under a <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a> open license</a>.</p>
-            </div>
-            <div class="card-action">
-              <%= link_to 'Read More', data_license_path, class: "button btn-align-md secondary-btn raised", target: :blank %>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="feature-card is-bordered has-text-centered revealOnScroll delay-3">
-            <div class="card-title">
-              <h4>Documented API</h4>
-            </div>
-            <div class="card-icon">
-              <span class="icon">
-                <i class="fas fa-plug"></i>
-              </span>
-            </div>
-            <div class="card-icon">
-            </div>
-            <div class="card-text">
-              <p>Brocade.io replicates the <a href="http://www.datakick.org">datakick.org</a>
-              API. It is currently read-only, with more features coming soon.</p>
-            </div>
-            <div class="card-action">
-              <%= link_to 'Read Docs', documentation_path, target: :blank, class: "button btn-align-md primary-btn raised"%>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section is-medium">
-  <div class="container">
-    <div class="columns">
-      <div class="column is-centered-tablet-portrait">
-        <h2 class="title section-title">We want to build the best service for sharing product data</h2>
-        <h3 class="subtitle is-4 is-muted">And we can't do it without you</h3>
-        <div class="divider"></div>
-      </div>
-      <div class="column is-8 mt-60">
-
-        <!-- icon block -->
-        <article class="media icon-box">
-          <figure class="media-left">
-            <p class="image">
-              <img class="lazy"
-                 data-src="assets/images/illustrations/icons/laptop-globe.svg">
-            </p>
-          </figure>
-          <div class="media-content mt-50">
-            <div class="content">
-              <p>
-                <span class="icon-box-title">Work on the open source project.</span>
-                <span class="icon-box-text">
-                  Fork the code, create pull requests, log bug reports or
-                  suggest news features over at the <a href="https://github.com/ferrisoxide/brocade.io">Github project</a>.</span>
-              </p>
-            </div>
-          </div>
-        </article>
-
-        <article class="media icon-box">
-          <figure class="media-left">
-            <p class="image">
-              <img class="lazy" data-src="assets/images/illustrations/icons/doc-sync.svg">
-            </p>
-          </figure>
-          <div class="media-content mt-50">
-            <div class="content">
-              <p>
-                <span class="icon-box-title">Add to the database.</span>
-                <span class="icon-box-text">
-                What products do you have in arms reach? Even entering data for one or two items you find around
-                the home or your office helps us expand the database. <%= link_to 'Create an account', new_user_registration_path %> and start contributing.</span>
-              </p>
-            </div>
-          </div>
-        </article>
-
-        <!-- article class="media icon-box">
-          <figure class="media-left">
-            <p class="image">
-              <img class="lazy" data-src="assets/images/illustrations/icons/mobile-feed.svg">
-            </p>
-          </figure>
-          <div class="media-content mt-50">
-            <div class="content">
-              <p>
-                <span class="icon-box-title">Become a backer.</span>
-                <span class="icon-box-text">
-                By supporting us through Patreon or the Github Sponsors programme,
-                you help us maintain the server infrastructure and add more features to the service.
-                </span>
-              </p>
-            </div>
-          </div>
-        </article-->
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="cta" class="section is-medium">
-  <div class="container">
-    <div class="title-wrapper has-text-centered">
-      <h2 class="title is-2 is-spaced">Thank You</h2>
-      <h3 class="subtitle is-5 is-muted is-spaced">Just by using our site you're helping us to improve the service.</h3>
-    </div>
-
-    <p class="has-text-centered mt-20 is-spaced">
-      We'd also like to shout out to the people who have helped get this project off the ground.
-    </p>
-    <p class="has-text-centered mt-20 is-spaced">
-    In particular we want to acknowledge the work done by <a href="https://github.com/ankane">@ankane</a>,
-    for his efforts in the development of the <a href='https://www.datakick.org'>Datakick</a> service
-    that inspired Brocade.io.
-    </p>
-    <p class="has-text-centered mt-20 is-spaced">
-      The icons used on this site were made by
-      <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a>
-      from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-    </p>
-  </div>
-</section>
+</main>

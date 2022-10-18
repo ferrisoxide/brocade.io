@@ -1,4 +1,4 @@
-<div class="column is-6 is-offset-2">
+<div class="column is-6 is-offset-2" data-controller="properties">
   <%= form_with(model: product, local: true) do |form| %>
     <% if product.errors.any? %>
       <div id="error_explanation">
@@ -39,7 +39,7 @@
 
     <section>
       <%- if PropertySet::NUTRITION_FACTS.keys.none? { |key| product.properties[key.to_s].present? } -%>
-        <%= link_to 'Add nutrition facts', nil, class: 'property-set-link', data: { target: 'nutrition-facts' } %>
+        <%= link_to_property_set('Add nutrition facts', 'nutrition-facts') %>
       <%- end -%>
 
       <div id="nutrition-facts">
@@ -52,7 +52,7 @@
 
     <section>
       <%- if PropertySet::INGREDIENTS.keys.none? { |key| product.properties[key.to_s].present? } -%>
-        <%= link_to 'Add ingredients', nil, class: 'property-set-link', data: { target: 'ingredients' } %>
+        <%= link_to_property_set('Add ingredients', 'ingredients') %>
       <%- end -%>
 
       <div id="ingredients">
@@ -65,10 +65,10 @@
 
     <section>
       <%- if PropertySet::PUBLISHING_DETAILS.keys.none? { |key| product.properties[key.to_s].present? } -%>
-        <%= link_to 'Add publishing details', nil, class: 'property-set-link', data: { target: 'publishing_details' } %>
+        <%= link_to_property_set('Add publishing details', 'publishing-details') %>
       <%- end -%>
 
-      <div id="publishing_details">
+      <div id="publishing-details">
         <h3>Publishing Details</h3>
         <% PropertySet::PUBLISHING_DETAILS.keys.each do |key| %>
           <%= render 'property_field', product: product, key: key %>
@@ -78,7 +78,7 @@
 
     <section>
       <%- if PropertySet::PACK_DETAILS.keys.none? { |key| product.properties[key.to_s].present? } -%>
-        <%= link_to 'Add pack details', nil, class: 'property-set-link', data: { target: 'pack_details' } %>
+        <%= link_to_property_set('Add pack details', 'pack_details') %>
       <%- end -%>
 
       <div id="pack_details">
@@ -89,8 +89,8 @@
       </div>
     </section>
 
-    <div class="actions">
-      <%= form.submit class: "button is-primary" %>
+    <div class="actions mt-3">
+      <%= form.submit class: "inline-flex items-center rounded-md border border-transparent bg-orange-600 px-4 py-2 text-base font-medium text-white hover:bg-orange-700" %>
     </div>
 
     <p>

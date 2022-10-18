@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   validates :name, presence: true
 
   def self.from_param(param)
-    by_gtin(param).first!
+    by_gtin(param)&.first
   end
 
   def to_param
@@ -24,9 +24,6 @@ class Product < ApplicationRecord
   }
 
   scope :by_gtin, lambda { |gtin|
-
-    gtin_14 = gtin.to_s.rjust(14, '0')
-    gtin_13 = gtin_14.slice(1, 13)
     where(gtin: padded_gtins(gtin))
   }
 
@@ -55,7 +52,7 @@ class Product < ApplicationRecord
       gtin_14 = gtin.rjust(14, '0')
       gtin_13 = gtin_14.slice(1, 13)
 
-      [gtin_14, gtin_13]
+      [gtin_14, gtin_13, gtin]
     end
 
     def sanitize_term(term)

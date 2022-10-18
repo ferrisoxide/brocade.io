@@ -1,59 +1,44 @@
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <%= link_to root_path, class: 'navbar-item' do -%>
-      <%= image_pack_tag 'media/images/barcode.png', height: '28px' %>
-    <%- end -%>
-
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <%= link_to 'Brocade.io', root_path, class: 'navbar-item' %>
-      <%= link_to 'Products', products_path, class: 'navbar-item' %>
-      <%- if user_signed_in? -%>
-        <%= link_to 'Add Product', new_product_path, class: 'navbar-item' %>
-      <%- end -%>
-      <%= link_to 'Documentation', documentation_path, class: 'navbar-item' %>
-
-      <!--div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a href="https://github.com/ferrisoxide/brocade.io/issues" class="navbar-item">
-            Report an issue
-          </a>
+<div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <nav class="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
+      <div class="flex flex-1 items-center md:absolute md:inset-y-0 md:left-0">
+        <div class="flex w-full items-center justify-between md:w-auto">
+          <%= link_to root_path do %>
+            <span class="sr-only">Brocade.io</span>
+            <%= image_tag 'barcode.png', class: "h-8 w-auto sm:h-10", alt: "logo"%>
+          <% end %>
+          <div class="-mr-2 flex items-center md:hidden">
+            <button type="button" class="inline-flex items-center justify-center rounded-md bg-gray-50 p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <!-- Heroicon name: outline/bars-3 -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+          </div>
         </div>
-      </div-->
-    </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
+      </div>
+      <div class="hidden md:flex md:space-x-10">
+        <%= link_to 'Brocade.io', root_path, class: "font-medium text-gray-500 hover:text-gray-900" %>
+        <%= link_to 'Products', products_path, class: "font-medium text-gray-500 hover:text-gray-900" %>
+        <%- if user_signed_in? -%>
+          <%= link_to 'Add Product', new_product_path, class: "font-medium text-gray-500 hover:text-gray-900" %>
+        <%- end -%>
+        <%= link_to 'Documentation', documentation_path, class: "font-medium text-gray-500 hover:text-gray-900" %>
+        <%#= link_to 'About', documentation_path, class: "font-medium text-gray-500 hover:text-gray-900" %>
+      </div>
+      <div class="hidden md:absolute md:inset-y-0 md:right-0 md:flex md:items-center md:justify-end md:space-x-10">
+        <%- if user_signed_in? -%>
+          <%= link_to 'My Account', edit_user_registration_path, class: "font-medium text-gray-500 hover:text-gray-900" %>
+        <%- end -%>
+        <span class="inline-flex rounded-md shadow">
           <% if user_signed_in? %>
             <%=
-              link_to(
+              button_to(
                 'Logout',
                 destroy_user_session_path,
                 method: :delete,
-                class: "navbar-item is-rounded button secondary-btn"
+                class: "inline-flex items-center rounded-md border border-transparent bg-orange-600 px-4 py-2 text-base font-medium text-white hover:bg-orange-700"
               )
             %>
           <% else %>
@@ -61,12 +46,69 @@
               link_to(
                 'Sign in',
                 new_user_session_path,
-                class: "navbar-item is-rounded button secondary-btn"
+                class: "inline-flex items-center rounded-md border border-transparent bg-orange-600 px-4 py-2 text-base font-medium text-white hover:bg-orange-700"
               )
             %>
           <% end %>
+        </span>
+      </div>
+    </nav>
+  </div>
+
+  <!--
+    Mobile menu, show/hide based on menu open state.
+
+    Entering: "duration-150 ease-out"
+      From: "opacity-0 scale-95"
+      To: "opacity-100 scale-100"
+    Leaving: "duration-100 ease-in"
+      From: "opacity-100 scale-100"
+      To: "opacity-0 scale-95"
+  -->
+  <div class="absolute inset-x-0 top-0 z-10 origin-top-right transform p-2 transition md:hidden">
+    <div class="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
+      <div class="flex items-center justify-between px-5 pt-4">
+        <div>
+          <%= image_tag 'barcode.png', class: "h-8 w-auto", alt: "logo"%>
+        </div>
+        <div class="-mr-2">
+          <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500">
+            <span class="sr-only">Close menu</span>
+            <!-- Heroicon name: outline/x-mark -->
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       </div>
+      <div class="px-2 pt-2 pb-3">
+        <%= link_to 'Brocade.io', root_path, class: "block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900" %>
+        <%= link_to 'Products', products_path, class: "block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900" %>
+        <%- if user_signed_in? -%>
+          <%= link_to 'Add Product', new_product_path, class: "block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900" %>
+        <%- end -%>
+        <%= link_to 'Documentation', documentation_path, class: "block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900" %>
+        <%= link_to 'About', documentation_path, class: "block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900" %>
+      </div>
+      <% if user_signed_in? %>
+        <%= link_to 'My Account', edit_user_registration_path, class: "block w-full bg-gray-50 px-5 py-3 bg-orange-600 text-center font-medium text-white hover:bg-orange-700" %>
+        <%=
+          button_to(
+            'Logout',
+            destroy_user_session_path,
+            method: :delete,
+            class: "block w-full bg-gray-50 px-5 py-3 bg-orange-600 text-center font-medium text-white hover:bg-orange-700"
+          )
+        %>
+      <% else %>
+        <%=
+          link_to(
+            'Sign in',
+            new_user_session_path,
+            class: "block w-full bg-gray-50 px-5 py-3 bg-orange-600 text-center font-medium text-white hover:bg-orange-700"
+          )
+        %>
+      <% end %>
     </div>
   </div>
-</nav>
+</div>
