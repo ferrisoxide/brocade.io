@@ -43,6 +43,7 @@ gem 'paper_trail'
 gem 'mailjet'
 
 gem 'net-http' # Silence spurious warnings, see https://github.com/ruby/net-protocol/issues/10
+gem 'rswag'
 
 group :development, :test do
   gem 'brakeman'
