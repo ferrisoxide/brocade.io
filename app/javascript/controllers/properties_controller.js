@@ -5,8 +5,6 @@ export default class extends Controller {
   static targets = [ "propertySets" ]
 
   connect() {
-    debugger;
-
     const $propertySetLinks = Array.prototype.slice.call(document.querySelectorAll('.property-set-link'), 0);
 
     if ($propertySetLinks.length > 0) {
