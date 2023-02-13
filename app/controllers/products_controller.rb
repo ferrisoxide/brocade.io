@@ -4,12 +4,16 @@ class ProductsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @products = product_search(params)
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def new
@@ -21,7 +25,6 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-
     if @product.save
       redirect_to @product, notice: 'Product was successfully created.'
     else
@@ -38,6 +41,14 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def flatten_product_attributes(product)
+    product
+      .attributes
+      .slice(*%w[gtin name brand_name])
+      .merge(product.properties)
+      .compact
+  end
 
   def set_product
     @product = Product.from_param(params[:id])

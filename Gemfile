@@ -62,7 +62,6 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubycritic', require: false
   gem 'timecop'
-  gem 'rswag'
 end
 
 group :development do
