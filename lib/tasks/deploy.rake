@@ -3,7 +3,7 @@
 namespace :heroku do
 
   HEROKU_PRODUCTION_DEPLOY = <<~BASH
-    git push heroku-production master:master && \
+    git push heroku-production main && \
     heroku run rake db:migrate -a brocade-io && \
     heroku restart -a brocade-io
   BASH
