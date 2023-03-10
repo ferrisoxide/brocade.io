@@ -51,6 +51,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'flay'
+  gem 'foreman'
   gem 'pry'
   gem 'pry-byebug'
   # TODO See https://github.com/pry/pry-coolline/issues/36
@@ -60,6 +61,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
+  gem 'rubocop-rspec'
   gem 'rubycritic', require: false
   gem 'timecop'
 end

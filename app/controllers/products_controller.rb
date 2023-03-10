@@ -1,18 +1,26 @@
-class ProductsController < ApplicationController
+# frozen_string_literal: true
 
+class ProductsController < ApplicationController
   include ProductSearch
 
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :set_product, only: %i[show edit update destroy]
 
   def index
     @products = product_search(params)
   end
 
   def show
-    respond_to do |format|
-      format.html
-      format.json
+    if @product.nil?
+      respond_to do |format|
+        format.html { redirect_to products_path, alert: 'Product not found' }
+        format.json { render json: { error: 'Product not found' }, status: :not_found }
+      end
+    else
+      respond_to do |format|
+        format.html
+        format.json
+      end
     end
   end
 
@@ -20,8 +28,7 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @product = Product.new(product_params)
@@ -42,6 +49,7 @@ class ProductsController < ApplicationController
 
   private
 
+  # SMELL: Not used.
   def flatten_product_attributes(product)
     product
       .attributes
@@ -49,6 +57,8 @@ class ProductsController < ApplicationController
       .merge(product.properties)
       .compact
   end
+
+  # SMELL: Not used?
 
   def set_product
     @product = Product.from_param(params[:id])
@@ -63,10 +73,9 @@ class ProductsController < ApplicationController
         :brand_name,
         properties: {}
       ).tap do |permitted_params|
-        permitted_params[:properties].keys.each do |key|
-          permitted_params[:properties].delete(key) unless permitted_params[:properties][key].present?
+        permitted_params[:properties].each_key do |key|
+          permitted_params[:properties].delete(key) if permitted_params[:properties][key].blank?
         end
       end
   end
-
 end
