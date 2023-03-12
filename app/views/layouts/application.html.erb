@@ -8,7 +8,6 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-mutate-approach="sync"></script>
-    <%= render 'layouts/analytics' if Rails.env.production? %>
     <%= javascript_importmap_tags %>
   </head>
   <body class="h-full">

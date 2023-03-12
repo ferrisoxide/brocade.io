@@ -3,7 +3,7 @@
 class ProductsController < ApplicationController
   include ProductSearch
 
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show destroy]
   before_action :set_product, only: %i[show edit update destroy]
 
   def index
@@ -47,9 +47,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    raise 'Not implemented'
+  end
+
   private
 
-  # SMELL: Not used.
+  # SMELL: Not used?
   def flatten_product_attributes(product)
     product
       .attributes
@@ -59,7 +63,6 @@ class ProductsController < ApplicationController
   end
 
   # SMELL: Not used?
-
   def set_product
     @product = Product.from_param(params[:id])
   end
