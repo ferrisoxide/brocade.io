@@ -23,6 +23,10 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Ignore development key and credentials, allowing for different keys on different machines.
+/config/credentials/development.key
+/config/credentials/development.yml.enc
+
 /public/packs
 /public/packs-test
 /node_modules
