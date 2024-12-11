@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   mount Rswag::Api::Engine => '/api-docs'
   use_doorkeeper do
     skip_controllers :authorizations, :applications,
-      :authorized_applications
+                     :authorized_applications
   end
 
-  devise_for :users
-  
+  devise_for :users, skip: [:registrations]
+
   namespace :api, defaults: { format: 'json' } do
     resources :items
   end
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'documentation', to: 'home#documentation'
   get 'acknowledgements', to: 'home#acknowledgements'
 
-  root to: "home#index"
+  root to: 'home#index'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
