@@ -6,7 +6,10 @@ Rails.application.routes.draw do
                      :authorized_applications
   end
 
-  devise_for :users, skip: [:registrations]
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
   namespace :api, defaults: { format: 'json' } do
     resources :items

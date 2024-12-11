@@ -10,6 +10,7 @@
   <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
     <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'space-y-6' }) do |f| %>
+        <%= recaptcha_v3(action: 'login') if Rails.env.production? %>
         <div>
           <%= f.label :email, class: 'block text-sm font-medium text-gray-700' %>
           <div class="mt-1">
