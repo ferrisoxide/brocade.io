@@ -8,7 +8,7 @@ module Users
 
     def check_captcha
       return unless Rails.env.production?
-      return if verify_recaptcha(action: 'login')
+      return if verify_recaptcha(action: 'login', secret_key: ENV.fetch('RECAPTCHA_SECRET', nil))
 
       self.resource = resource_class.new sign_in_params
 

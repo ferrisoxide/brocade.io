@@ -6,7 +6,7 @@ module Users
 
     def check_captcha
       return unless Rails.env.production?
-      return if verify_recaptcha(action: 'signup')
+      return if verify_recaptcha(action: 'signup', secret_key: ENV.fetch('RECAPTCHA_SECRET', nil))
 
       self.resource = resource_class.new sign_up_params
       resource.validate # Look for any other validation errors besides reCAPTCHA
