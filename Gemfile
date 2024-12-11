@@ -33,6 +33,7 @@ gem 'bootsnap', require: false
 # Authorisation / authentication
 gem 'devise'
 gem 'doorkeeper'
+gem 'rack-attack'
 gem 'recaptcha'
 
 # Pagination
