@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module Users
+  # Subclass the Devise RegistrationsController to add reCAPTCHA validation
   class RegistrationsController < Devise::RegistrationsController
     prepend_before_action :check_captcha, only: [:create] # Change this to be any actions you want to protect.
 
     def check_captcha
-      return unless Rails.env.production?
-      return if verify_recaptcha(action: 'signup', secret_key: ENV.fetch('RECAPTCHA_SECRET', nil))
+      return true if verify_recaptcha(action: 'registration')
 
       self.resource = resource_class.new sign_up_params
       resource.validate # Look for any other validation errors besides reCAPTCHA

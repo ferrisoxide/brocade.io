@@ -9,47 +9,47 @@
 
   <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
     <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name), local: true, data: { turbo: false }, html: { class: 'space-y-6' },) do |f| %>
-        <%- if Rails.env.production? %>
-          <%= turbo_frame_tag 'login' do %>
-            <div class="mb-3 row">
-              <%= recaptcha_v3 action: 'signup', site_key: ENV['RECAPTCHA_KEY'], turbolinks: true %>
+      <%= turbo_frame_tag resource, target: '_top' do %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), local: true, data: { turbo: false }, html: { class: 'space-y-6' },) do |f| %>
+          <div>
+            <%= f.label :email, class: 'block text-sm font-medium text-gray-700' %>
+            <div class="mt-1">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", type: 'email', required: true, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500 sm:text-sm" %>
+            </div>
+          </div>
+
+          <div>
+            <%= f.label :password, class: 'block text-sm font-medium text-gray-700' %>
+            <div class="mt-1">
+              <%= f.password_field :password, autocomplete: "current-password", required: true, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500 sm:text-sm" %>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <% if devise_mapping.rememberable? %>
+              <div class="flex items-center">
+                <%= f.check_box :remember_me, class: "h-4 w-4 rounded border-gray-300 text-orange-600 focus:ring-orange-500" %>
+                <%= f.label :remember_me, class: "ml-2 block text-sm text-gray-900" %>
+              </div>
+            <% end %>
+
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+              <div class="text-sm">
+                <%= link_to "Forgot your password?", new_password_path(resource_name), class: "font-medium text-orange-600 hover:text-orange-500" %>
+              </div>
+            <% end %>
+          </div>
+
+          <%= turbo_frame_tag 'recaptcha' do %>
+            <div class="mb-3">
+              <%= recaptcha_v3 action: 'login', turbo: true %>
             </div>
           <% end %>
+
+          <div>
+            <%= f.submit "Sign in", class: "flex w-full justify-center rounded-md border border-transparent bg-orange-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2" %>
+          </div>
         <% end %>
-
-        <div>
-          <%= f.label :email, class: 'block text-sm font-medium text-gray-700' %>
-          <div class="mt-1">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", type: 'email', required: true, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500 sm:text-sm" %>
-          </div>
-        </div>
-
-        <div>
-          <%= f.label :password, class: 'block text-sm font-medium text-gray-700' %>
-          <div class="mt-1">
-            <%= f.password_field :password, autocomplete: "current-password", required: true, class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500 sm:text-sm" %>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <% if devise_mapping.rememberable? %>
-            <div class="flex items-center">
-              <%= f.check_box :remember_me, class: "h-4 w-4 rounded border-gray-300 text-orange-600 focus:ring-orange-500" %>
-              <%= f.label :remember_me, class: "ml-2 block text-sm text-gray-900" %>
-            </div>
-          <% end %>
-
-          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-            <div class="text-sm">
-              <%= link_to "Forgot your password?", new_password_path(resource_name), class: "font-medium text-orange-600 hover:text-orange-500" %>
-            </div>
-          <% end %>
-        </div>
-
-        <div>
-          <%= f.submit "Sign in", class: "flex w-full justify-center rounded-md border border-transparent bg-orange-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2" %>
-        </div>
       <% end %>
     </div>
   </div>
