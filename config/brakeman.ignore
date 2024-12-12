@@ -1,0 +1,29 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "ec41352b9c90652e2d0cf3eadf56fd740a1bf45509fa9d6535dcf616350f85f9",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/products_controller.rb",
+      "line": 45,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(Product.from_param(params[:id]), :notice => \"Product was successfully updated.\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ProductsController",
+        "method": "update"
+      },
+      "user_input": "Product.from_param(params[:id])",
+      "confidence": "High",
+      "cwe_id": [
+        601
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2024-12-12 23:51:09 +1030",
+  "brakeman_version": "6.2.2"
+}
