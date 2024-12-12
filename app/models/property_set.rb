@@ -1,5 +1,6 @@
-module PropertySet
+# frozen_string_literal: true
 
+module PropertySet
   NUTRITION_FACTS = {
     serving_size: { type: :text },
     servings_per_container: { type: :text },
@@ -20,15 +21,15 @@ module PropertySet
   }.freeze
 
   INGREDIENTS = {
-    ingredients: { type: :text },
-  }
+    ingredients: { type: :text }
+  }.freeze
 
   PUBLISHING_DETAILS = {
     author: { type: :text },
     format: { type: :text },
     publisher: { type: :text },
     pages: { type: :number }
-  }
+  }.freeze
 
   PACK_DETAILS = {
     weight_g: { unit: :g, type: :number },
@@ -37,11 +38,11 @@ module PropertySet
     volume_fluid_ounce: { unit: :floz, type: :number },
     unit_count: { type: :number },
     alcohol_by_volume: { type: :number },
-    alcohol_by_weight: { type: :number },
-  }
+    alcohol_by_weight: { type: :number }
+  }.freeze
 
   ALL = NUTRITION_FACTS
-    .merge(INGREDIENTS)
-    .merge(PUBLISHING_DETAILS)
-    .merge(PACK_DETAILS)
+        .merge(INGREDIENTS)
+        .merge(PUBLISHING_DETAILS)
+        .merge(PACK_DETAILS)
 end

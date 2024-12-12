@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller for products
 class ProductsController < ApplicationController
   include ProductSearch
 
@@ -10,10 +11,10 @@ class ProductsController < ApplicationController
     @products = product_search(params)
   end
 
-  def show
+  def show # rubocop:disable Metrics/MethodLength
     if @product.nil?
       respond_to do |format|
-        format.html { redirect_to products_path, alert: 'Product not found' }
+        format.html { redirect_to products_path, alert: 'Product not found' } # rubocop:disable Rails/I18nLocaleTexts
         format.json { render json: { error: 'Product not found' }, status: :not_found }
       end
     else
@@ -33,7 +34,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to @product, notice: 'Product was successfully created.'
+      redirect_to @product, notice: 'Product was successfully created.' # rubocop:disable Rails/I18nLocaleTexts
     else
       render :new
     end
@@ -41,7 +42,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to @product, notice: 'Product was successfully updated.'
+      redirect_to @product, notice: 'Product was successfully updated.' # rubocop:disable Rails/I18nLocaleTexts
     else
       render :edit
     end
@@ -67,7 +68,7 @@ class ProductsController < ApplicationController
     @product = Product.from_param(params[:id])
   end
 
-  def product_params
+  def product_params # rubocop:disable Metrics/MethodLength
     params
       .require(:product)
       .permit(

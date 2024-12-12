@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.gtin product.gtin
 json.brand_name product.brand_name
 json.name product.name

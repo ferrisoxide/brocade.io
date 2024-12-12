@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
+HEROKU_PRODUCTION_DEPLOY = <<~BASH
+  git push heroku-production main && \
+  heroku run rake db:migrate -a brocade-io && \
+  heroku restart -a brocade-io
+BASH
+
 namespace :heroku do
-
-  HEROKU_PRODUCTION_DEPLOY = <<~BASH
-    git push heroku-production main && \
-    heroku run rake db:migrate -a brocade-io && \
-    heroku restart -a brocade-io
-  BASH
-
   def print_warning
     printf <<~TEXT
       \033[31m
@@ -21,11 +20,11 @@ namespace :heroku do
   end
 
   def confirmed?
-    STDIN.gets.strip.upcase == 'YES'
+    $stdin.gets.strip.casecmp('YES').zero?
   end
 
-  desc "deploy to production environment on Heroku"
-  task :deploy do
+  desc 'deploy to production environment on Heroku'
+  task deploy: :environment do
     print_warning
     print_confirmation
     if confirmed?

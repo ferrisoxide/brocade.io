@@ -1,4 +1,6 @@
-module ProductSearch
+# frozen_string_literal: true
+
+module ProductSearch # rubocop:disable Style/Documentation
   extend ActiveSupport::Concern
 
   included do
@@ -18,7 +20,7 @@ module ProductSearch
   def build_query(query_params)
     base_query = Product.full_text_search(query_params.split)
 
-    return base_query unless gtin?(query_params) 
+    return base_query unless gtin?(query_params)
 
     base_query.or(Product.by_gtin(query_params))
   end

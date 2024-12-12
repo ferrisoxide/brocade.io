@@ -1,5 +1,7 @@
-class CreateProducts < ActiveRecord::Migration[6.0]
-  def change
+# frozen_string_literal: true
+
+class CreateProducts < ActiveRecord::Migration[6.0] # rubocop:disable Style/Documentation
+  def change # rubocop:disable Metrics/MethodLength
     create_table :products do |t|
       t.string :gtin
       t.string :gtin_encoding

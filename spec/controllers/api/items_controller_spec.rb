@@ -1,5 +1,3 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-RSpec.describe Api::ItemsController, type: :controller do
-  
-end
+require 'rails_helper'

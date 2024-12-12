@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Product < ApplicationRecord
+class Product < ApplicationRecord # rubocop:disable Style/Documentation
   has_paper_trail
 
   validates :gtin, presence: true, uniqueness: true
@@ -27,9 +27,7 @@ class Product < ApplicationRecord
     where(gtin: padded_gtins(gtin))
   }
 
-  private
-
-  FULL_TEXT_SEARCH_SQL = <<~SQL
+  FULL_TEXT_SEARCH_SQL = <<~SQL.squish
     to_tsvector('english', products.properties) @@ to_tsquery(:terms)
     OR to_tsvector('english', products.name) @@ to_tsquery(:terms)
     OR to_tsvector('english', products.brand_name) @@ to_tsquery(:terms)
@@ -38,7 +36,6 @@ class Product < ApplicationRecord
   private_constant :FULL_TEXT_SEARCH_SQL
 
   class << self
-
     def map_search_terms(terms)
       Array
         .wrap(terms)
@@ -49,14 +46,14 @@ class Product < ApplicationRecord
     def padded_gtins(gtin)
       return [gtin] if gtin.length == 14 && gtin[0] != '0'
 
-      gtin_14 = gtin.rjust(14, '0')
-      gtin_13 = gtin_14.slice(1, 13)
+      gtin_14 = gtin.rjust(14, '0') # rubocop:disable Naming/VariableNumber
+      gtin_13 = gtin_14.slice(1, 13) # rubocop:disable Naming/VariableNumber
 
       [gtin_14, gtin_13, gtin]
     end
 
     def sanitize_term(term)
-      term.gsub(/([^a-zA-Z0-9 -])/, "\\\\\\1")
+      term.gsub(/([^a-zA-Z0-9 -])/, '\\\\\\1')
     end
   end
 end

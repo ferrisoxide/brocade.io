@@ -1,11 +1,12 @@
-class AddFullTextIndicesOnProducts < ActiveRecord::Migration[6.0]
+# frozen_string_literal: true
 
-  COLUMNS = %w[properties name brand_name]
+class AddFullTextIndicesOnProducts < ActiveRecord::Migration[6.0] # rubocop:disable Style/Documentation
+  COLUMNS = %w[properties name brand_name].freeze
 
   def up
     COLUMNS.each do |column|
       execute(
-        <<~SQL
+        <<~SQL.squish
           CREATE INDEX products_#{column}_full_text_index ON products
           USING gin (( to_tsvector('english', #{column}) ));
         SQL

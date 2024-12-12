@@ -5,6 +5,4 @@ require:
 
 AllCops:
   NewCops: enable
-RSpec/Capybara/FeatureMethods:
-  Exclude:
-    - 'spec/features/**/*_spec.rb'
+  SuggestExtensions: false
