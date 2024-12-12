@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class User < ApplicationRecord
+class User < ApplicationRecord # rubocop:disable Style/Documentation
   has_paper_trail
 
   # Include default devise modules. Others available are:
@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   class << self
     def authenticate(email, password)
-      user = User.find_for_authentication(email: email)
+      user = User.find_for_authentication(email:)
       user.try(:valid_password?, password) ? user : nil
     end
   end

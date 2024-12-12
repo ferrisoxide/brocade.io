@@ -3,7 +3,7 @@
 module Users
   # Subclass the Devise SessionsController to add reCAPTCHA validation
   class SessionsController < Devise::SessionsController
-    prepend_before_action :check_captcha, only: [:create] # Change this to be any actions you want to protect.
+    prepend_before_action :check_captcha, only: [:create] # rubocop:disable Rails/LexicallyScopedActionFilter
 
     private
 
