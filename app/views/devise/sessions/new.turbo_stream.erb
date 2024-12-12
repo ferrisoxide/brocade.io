@@ -1,0 +1,6 @@
+<%= turbo_stream.replace 'recaptcha' do %>
+  <div class="mb-3"
+    id='recaptchaV2'
+    data-controller='recaptcha-v2'
+    data-recaptcha-v2-site-key-value="<%=  Recaptcha.configuration.site_key %>"></div>
+<% end %>
