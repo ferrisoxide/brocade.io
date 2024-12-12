@@ -6,7 +6,7 @@ class Api::ItemsController < ApplicationController
 
   before_action :doorkeeper_authorize!, only: [:create, :update]
   before_action :set_item, only: [:show, :update, :destroy]
-  
+
   rescue_from ActiveRecord::RecordNotFound, with: :product_not_found
 
   def index
@@ -14,6 +14,11 @@ class Api::ItemsController < ApplicationController
   end
 
   def show
+    if @item
+      render json: @item
+    else
+      render json: { error: "Product '#{params[:id]}' not found" }, status: :not_found
+    end
   end
 
   def create
@@ -49,7 +54,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def product_not_found(_exception)
-    render json: { error: "Product '#{params[:id]}' not found" }, status: :not_found 
+    render json: { error: "Product '#{params[:id]}' not found" }, status: :not_found
   end
 
   def item_params
