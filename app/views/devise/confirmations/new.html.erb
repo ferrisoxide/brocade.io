@@ -11,20 +11,20 @@
         <div>
           <%= f.label :email, class: 'block text-sm font-medium text-gray-700' %>
           <div class="mt-1">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),  class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500 sm:text-sm"  %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),  class: "block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-orange-700 focus:outline-none focus:ring-orange-500 sm:text-sm"  %>
           </div>
         </div>
 
         <div class="flex items-center justify-between">
           <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
             <div class="text-sm">
-              <%= link_to "Forgot your password?", new_password_path(resource_name), class: "font-medium text-orange-600 hover:text-orange-500" %>
+              <%= link_to "Forgot your password?", new_password_path(resource_name), class: "font-medium text-orange-700 hover:text-orange-700" %>
             </div>
           <% end %>
         </div>
 
         <div>
-          <%= f.submit "Resend confirmation instructions", class: "flex w-full justify-center rounded-md border border-transparent bg-orange-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2" %>
+          <%= f.submit "Resend confirmation instructions", class: "flex w-full justify-center rounded-md border border-transparent bg-orange-700 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2" %>
         </div>
       <% end %>
     </div>

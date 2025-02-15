@@ -1,7 +1,7 @@
 <main class="mx-auto mt-16 max-w-7xl px-4 sm:mt-24">
   <div class="grid grid-cols-2 gap-4">
     <div class="text-center mt-6">
-      <h3>Free and open <span class="text-orange-600">product database</span></h3>
+      <h3>Free and open <span class="text-orange-700">product database</span></h3>
       <h1 class="text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
         Brocade.io
       </h1>
@@ -13,9 +13,9 @@
           <div class="mt-1">
             <%= text_field_tag :query, nil, class: 'block w-full text-2xl rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500', placeholder: 'by barcode or text' %>
           </div>
-          <label for="query" class="block text-sm font-small text-gray-700 text-right">
+          <span class="block text-sm font-small text-gray-700 text-right">
             ... from <%= humanize_product_count(Product.count) %>
-          </label>
+          </span>
         <% end %>
       </div>
     </div>

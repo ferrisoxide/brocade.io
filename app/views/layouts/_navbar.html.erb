@@ -5,7 +5,7 @@
         <div class="flex w-full items-center justify-between md:w-auto">
           <%= link_to root_path do %>
             <span class="sr-only">Brocade.io</span>
-            <%= image_tag 'barcode.png', class: "h-8 w-auto sm:h-10", alt: "logo"%>
+            <%= image_tag 'barcode.png', class: "h-8 w-auto sm:h-10", alt: "brocade's logo - a stylised barcode" %>
           <% end %>
           <div class="-mr-2 flex items-center md:hidden">
             <button type="button" class="inline-flex items-center justify-center rounded-md bg-gray-50 p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500" aria-expanded="false">
@@ -38,7 +38,7 @@
                 'Logout',
                 destroy_user_session_path,
                 method: :delete,
-                class: "inline-flex items-center rounded-md border border-transparent bg-orange-600 px-4 py-2 text-base font-medium text-white hover:bg-orange-700"
+                class: "inline-flex items-center rounded-md border border-transparent bg-orange-700 px-4 py-2 text-base font-medium text-white hover:bg-orange-800"
               )
             %>
           <% else %>
@@ -46,7 +46,7 @@
               link_to(
                 'Sign in',
                 new_user_session_path,
-                class: "inline-flex items-center rounded-md border border-transparent bg-orange-600 px-4 py-2 text-base font-medium text-white hover:bg-orange-700"
+                class: "inline-flex items-center rounded-md border border-transparent bg-orange-700 px-4 py-2 text-base font-medium text-white hover:bg-orange-800"
               )
             %>
           <% end %>
@@ -97,7 +97,7 @@
             'Logout',
             destroy_user_session_path,
             method: :delete,
-            class: "block w-full bg-gray-50 px-5 py-3 bg-orange-600 text-center font-medium text-white hover:bg-orange-700"
+            class: "block w-full bg-gray-50 px-5 py-3 bg-orange-700 text-center font-medium text-white hover:bg-orange-600"
           )
         %>
       <% else %>
@@ -105,7 +105,7 @@
           link_to(
             'Sign in',
             new_user_session_path,
-            class: "block w-full bg-gray-50 px-5 py-3 bg-orange-600 text-center font-medium text-white hover:bg-orange-700"
+            class: "block w-full bg-gray-50 px-5 py-3 bg-orange-700 text-center font-medium text-white hover:bg-orange-600"
           )
         %>
       <% end %>
