@@ -9,10 +9,12 @@ module ProductSearch # rubocop:disable Style/Documentation
 
   def product_search(params)
     if params[:query].present?
-      paginate(build_query(params[:query]))
+      pagy, records = pagy(build_query(params[:query]))
     else
-      paginate(Product.all)
+      pagy, records = pagy(Product.all)
     end
+
+    [pagy, records]
   end
 
   private

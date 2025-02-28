@@ -39,8 +39,9 @@ gem 'rack-attack'
 gem 'recaptcha'
 
 # Pagination
+
 gem 'api-pagination'
-gem 'kaminari', git: 'https://github.com/keithyoder/kaminari.git', branch: 'deprecator-notify'
+gem 'pagy'
 
 gem 'paper_trail'
 
@@ -88,7 +89,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-gem 'tailwindcss-rails', '~> 2.0'
+ gem "tailwindcss-rails", "~> 3.3.1"
 
 # Use Redis for Action Cable
 gem 'redis', '~> 4.0'

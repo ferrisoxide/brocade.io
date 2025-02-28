@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
 
   def index
-    @products = product_search(params)
+    @pagy, @products = product_search(params)
   end
 
   def show # rubocop:disable Metrics/MethodLength

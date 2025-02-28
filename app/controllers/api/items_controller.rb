@@ -13,7 +13,7 @@ module Api
     rescue_from ActiveRecord::RecordNotFound, with: :product_not_found
 
     def index
-      @items = product_search(params)
+      @pagy, @items = product_search(params)
     end
 
     def show

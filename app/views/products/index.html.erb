@@ -12,12 +12,13 @@
           </div>
         </div>
       <%- end -%>
-      <p class="mt-2 text-sm text-gray-700"><%= humanize_product_count(@products.total_count) %></p>
+      <p class="mt-2 text-sm text-gray-700"><%= humanize_product_count(@pagy.count) %></p>
     </div>
     <div>
-      <div class="flex flex-1 justify-between sm:justify-end">
-        <%= link_to_prev_page @products, "< Prev", params: params, class: "relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" %>
-        <%= link_to_next_page @products, "Next >", params: params, class: "relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" %>
+      <div class="flex flex-1 justify-between sm:justify-end divide-y divide-gray-200">
+        <%- if @pagy.next.present? || @pagy.prev.present? %>
+          <div class="mt-4 flex justify-center"><%== pagy_nav(@pagy) %></div>
+        <% end %>
       </div>
     </div>
   </div>
