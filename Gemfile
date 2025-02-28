@@ -40,7 +40,7 @@ gem 'recaptcha'
 
 # Pagination
 gem 'api-pagination'
-gem 'kaminari'
+gem 'kaminari', git: 'https://github.com/keithyoder/kaminari.git', branch: 'deprecator-notify'
 
 gem 'paper_trail'
 
