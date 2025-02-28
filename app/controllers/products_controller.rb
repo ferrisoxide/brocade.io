@@ -70,12 +70,11 @@ class ProductsController < ApplicationController
 
   def product_params # rubocop:disable Metrics/MethodLength
     params
-      .require(:product)
-      .permit(
-        :gtin,
-        :name,
-        :brand_name,
-        properties: {}
+      .expect(
+        product: [:gtin,
+                  :name,
+                  :brand_name,
+                  { properties: {} }]
       ).tap do |permitted_params|
         permitted_params[:properties].each_key do |key|
           permitted_params[:properties].delete(key) if permitted_params[:properties][key].blank?

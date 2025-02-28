@@ -57,7 +57,6 @@ group :development, :test do
   gem 'bundler-audit'
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
-  gem 'flay'
   gem 'foreman'
   gem 'pry'
   gem 'pry-byebug'
@@ -69,7 +68,6 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  gem 'rubycritic', require: false
   gem 'timecop'
 end
 
@@ -89,7 +87,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
- gem "tailwindcss-rails", "~> 3.3.1"
+gem 'tailwindcss-rails', '~> 3.3.1'
 
 # Use Redis for Action Cable
 gem 'redis', '~> 4.0'
