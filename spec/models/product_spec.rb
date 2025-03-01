@@ -40,7 +40,7 @@ RSpec.describe Product, type: :model do
           WHERE
           (to_tsvector('english', products.properties) @@ to_tsquery('foo:* & bar:*')
           OR to_tsvector('english', products.name) @@ to_tsquery('foo:* & bar:*')
-          OR to_tsvector('english', products.brand_name) @@ to_tsquery('foo:* & bar:*') )
+          OR to_tsvector('english', products.brand_name) @@ to_tsquery('foo:* & bar:*'))
         SQL
       end
 
@@ -56,7 +56,7 @@ RSpec.describe Product, type: :model do
           WHERE
           (to_tsvector('english', products.properties) @@ to_tsquery('foo:* & \\&:* & bar:*')
           OR to_tsvector('english', products.name) @@ to_tsquery('foo:* & \\&:* & bar:*')
-          OR to_tsvector('english', products.brand_name) @@ to_tsquery('foo:* & \\&:* & bar:*') )
+          OR to_tsvector('english', products.brand_name) @@ to_tsquery('foo:* & \\&:* & bar:*'))
         SQL
       end
 
