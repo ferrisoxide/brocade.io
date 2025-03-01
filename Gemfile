@@ -55,6 +55,7 @@ gem 'csv'
 group :development, :test do
   gem 'brakeman'
   gem 'bundler-audit'
+  gem 'dotenv'
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'foreman'
@@ -88,6 +89,3 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'tailwindcss-rails', '~> 3.3.1'
-
-# Use Redis for Action Cable
-gem 'redis', '~> 4.0'

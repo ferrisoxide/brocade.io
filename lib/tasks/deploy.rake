@@ -6,7 +6,7 @@ HEROKU_PRODUCTION_DEPLOY = <<~BASH
   heroku restart -a brocade-io
 BASH
 
-namespace :heroku do
+namespace :deploy do
   def print_warning
     printf <<~TEXT
       \033[31m
@@ -24,7 +24,7 @@ namespace :heroku do
   end
 
   desc 'deploy to production environment on Heroku'
-  task deploy: :environment do
+  task production: :environment do
     print_warning
     print_confirmation
     if confirmed?

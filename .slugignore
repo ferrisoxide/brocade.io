@@ -1,0 +1,10 @@
+# Ingnore test files
+/spec
+/features
+
+# Igmore legacy files
+/node_modules
+
+# Ignore files used in development
+/.rubocop.yml
+/config/brakeman.ignore
